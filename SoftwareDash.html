@@ -9,7 +9,7 @@
             font-family: sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: white; /* Changed background color to white */
+            background-color: white;
         }
 
         .container {
@@ -37,7 +37,7 @@
 
         .software-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax for better alignment */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
@@ -45,9 +45,8 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 15px; /* Reduced padding for better alignment */
-            display: flex; /* Use flexbox for alignment */
-            align-items: center; /* Align items vertically */
+            padding: 20px;
+            text-align: center; /* Center align items */
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
         }
@@ -57,36 +56,32 @@
         }
 
         .software-icon {
-            font-size: 2.5em; /* Adjusted icon size */
-            margin-right: 15px; /* Add margin to separate icon and text */
+            font-size: 3em;
+            margin-bottom: 10px;
             color: #555;
-            flex-shrink: 0; /* Prevent icon from shrinking */
         }
 
         .software-name {
             font-weight: bold;
             color: #333;
-            flex-grow: 1; /* Allow name to grow and take remaining space */
-            text-align: left; /* Align text to the left */
         }
 
         .software-description {
             color: #777;
-            display: none; /* Hide description */
         }
 
         /* Example Icon Colors (Replace with actual icons or images) */
         .icon-ae { color: purple; }
         .icon-an { color: red; }
         .icon-au { color: green; }
-        .icon-ch { color: #800080; } /* Dark Purple */
-        .icon-ai { color: #008080; } /* Teal */
-        .icon-id { color: #FF69B4; } /* Hot Pink */
-        .icon-lr { color: #808080; } /* Gray */
-        .icon-me { color: #8B008B; } /* Dark Magenta */
-        .icon-ps { color: #0000FF; } /* Blue */
-        .icon-pi { color: #00CED1; } /* Dark Turquoise */
-        .icon-cc { color: #A9A9A9; } /* Dark Gray */
+        .icon-ch { color: #800080; }
+        .icon-ai { color: #008080; }
+        .icon-id { color: #FF69B4; }
+        .icon-lr { color: #808080; }
+        .icon-me { color: #8B008B; }
+        .icon-ps { color: #0000FF; }
+        .icon-pi { color: #00CED1; }
+        .icon-cc { color: #A9A9A9; }
     </style>
 </head>
 <body>
@@ -169,7 +164,7 @@
             softwareItems.forEach(item => {
                 const itemName = item.dataset.name.toLowerCase();
                 if (itemName.includes(searchTerm)) {
-                    item.style.display = 'flex'; // Use flex to maintain alignment
+                    item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
                 }
