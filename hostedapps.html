@@ -138,7 +138,7 @@
                 <div class="software-description">CrisisGO</div>
             </div>
             <div class="software-item" data-name="GMail - Google">
-                <div class="software-icon icon-gmail">GMa</div>
+                <div class="software-icon icon-gmail">Gma</div>
                 <div class="software-name">GMail - Google</div>
                 <div class="software-description">GMail - Google</div>
             </div>
@@ -153,12 +153,12 @@
                 <div class="software-description">Edlio</div>
             </div>
             <div class="software-item" data-name="EdPuzzle">
-                <div class="software-icon icon-edpuzzle">EdP</div>
+                <div class="software-icon icon-edpuzzle">Edp</div>
                 <div class="software-name">EdPuzzle</div>
                 <div class="software-description">EdPuzzle</div>
             </div>
             <div class="software-item" data-name="EDUREADY360 LLC">
-                <div class="software-icon icon-eduready360">EDU</div>
+                <div class="software-icon icon-eduready360">Edu</div>
                 <div class="software-name">EDUREADY360 LLC</div>
                 <div class="software-description">EDUREADY360 LLC</div>
             </div>
@@ -168,7 +168,7 @@
                 <div class="software-description">Embark Corp</div>
             </div>
             <div class="software-item" data-name="FOLLETT SCHOOL (ACCESSIT)">
-                <div class="software-icon icon-follett">FOL</div>
+                <div class="software-icon icon-follett">Fol</div>
                 <div class="software-name">FOLLETT SCHOOL (ACCESSIT)</div>
                 <div class="software-description">FOLLETT SCHOOL (ACCESSIT)</div>
             </div>
@@ -193,17 +193,17 @@
                 <div class="software-description">GitHub Desktop</div>
             </div>
             <div class="software-item" data-name="GMetrix">
-                <div class="software-icon icon-gmetrix">GMe</div>
+                <div class="software-icon icon-gmetrix">Gme</div>
                 <div class="software-name">GMetrix</div>
                 <div class="software-description">GMetrix</div>
             </div>
             <div class="software-item" data-name="HIBster">
-                <div class="software-icon icon-hibster">HIB</div>
+                <div class="software-icon icon-hibster">Hib</div>
                 <div class="software-name">HIBster</div>
                 <div class="software-description">HIBster</div>
             </div>
             <div class="software-item" data-name="IXL">
-                <div class="software-icon icon-ixl">IXL</div>
+                <div class="software-icon icon-ixl">Ixl</div>
                 <div class="software-name">IXL</div>
                 <div class="software-description">IXL</div>
             </div>
@@ -223,7 +223,7 @@
                 <div class="software-description">Naviance</div>
             </div>
             <div class="software-item" data-name="NEWSELA">
-                <div class="software-icon icon-newsela">NEW</div>
+                <div class="software-icon icon-newsela">New</div>
                 <div class="software-name">NEWSELA</div>
                 <div class="software-description">NEWSELA</div>
             </div>
@@ -233,4 +233,54 @@
                 <div class="software-description">Notable</div>
             </div>
             <div class="software-item" data-name="Noteflight">
-                <div class="software-icon icon-noteflight">N
+                <div class="software-icon icon-noteflight">Not</div>
+                <div class="software-name">Noteflight</div>
+                <div class="software-description">Noteflight</div>
+            </div>
+            <div class="software-item" data-name="Padlet">
+                <div class="software-icon icon-padlet">Pad</div>
+                <div class="software-name">Padlet</div>
+                <div class="software-description">Padlet</div>
+            </div>
+            <div class="software-item" data-name="Pear Deck">
+                <div class="software-icon icon-pear">Pea</div>
+                <div class="software-name">Pear Deck</div>
+                <div class="software-description">Pear Deck</div>
+            </div>
+            <div class="software-item" data-name="Quizet">
+                <div class="software-icon icon-quizet">Qui</div>
+                <div class="software-name">Quizet</div>
+                <div class="software-description">Quizet</div>
+            </div>
+            <div class="software-item" data-name="RealTime">
+                <div class="software-icon icon-realtime">Rea</div>
+                <div class="software-name">RealTime</div>
+                <div class="software-description">RealTime</div>
+            </div>
+            <div class="software-item" data-name="Ring Central">
+                <div class="software-icon icon-ringcentral">Rin</div>
+                <div class="software-name">Ring Central</div>
+                <div class="software-description">Ring Central</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const softwareItems = document.querySelectorAll('.software-item');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            softwareItems.forEach(item => {
+                const itemName = item.dataset.name.toLowerCase();
+                if (itemName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
