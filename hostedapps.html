@@ -6,17 +6,39 @@
     <title>ACIT Hosted Apps</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=support_agent,description" />
     <style>
+        /* --- CORRECTED ICON FONT RULE --- */
         .material-symbols-outlined {
+            /* ---- CORE FIX: Specify the font family ---- */
+            font-family: 'Material Symbols Outlined';
+
+            /* Recommended defaults for icon fonts */
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;  /* Default size, will be overridden by specific rules below */
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: 'liga';
+
+            /* Your existing variation settings */
             font-variation-settings:
             'FILL' 0,
             'wght' 400,
             'GRAD' 0,
             'opsz' 24;
-             /* Ensure vertical alignment behaves */
-             vertical-align: middle;
-             /* Prevent icon selection */
-             user-select: none;
+
+            /* Your existing alignment/selection overrides */
+            vertical-align: middle;
+            user-select: none;
         }
+        /* --- END OF ICON FONT RULE --- */
 
         body {
             font-family: sans-serif;
@@ -32,7 +54,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px; /* Explicitly set the header height */
+            height: 60px;
         }
 
         .container {
@@ -51,41 +73,40 @@
             display: flex;
             align-items: center;
             height: 100%;
-            flex-grow: 1; /* Allow search to take available space if needed */
-            margin-right: 20px; /* Add some space between search and links */
+            flex-grow: 1;
+            margin-right: 20px;
         }
 
         #search-input {
             padding: 10px;
-            width: 300px; /* Or make it more responsive */
+            width: 300px;
             max-width: 100%;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin: 0;
         }
 
-        /* Container for header links */
         #header-links {
-            display: flex; /* Align links horizontally */
+            display: flex;
             align-items: center;
-            gap: 25px; /* Space between KB and Help links */
-            flex-shrink: 0; /* Prevent links from shrinking */
+            gap: 25px;
+            flex-shrink: 0;
         }
 
-        /* Common style for header links */
         .header-link {
             color: white;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 6px; /* Space between icon and text */
-            white-space: nowrap; /* Prevent text wrapping */
+            gap: 6px;
+            white-space: nowrap;
         }
         .header-link:hover {
-            text-decoration: underline; /* Optional hover effect */
+            text-decoration: underline;
         }
+        /* Overriding default icon size specifically for header */
         .header-link .material-symbols-outlined {
-            font-size: 1.3em; /* Slightly larger icon in header */
+            font-size: 1.3em;
         }
 
         .software-grid {
@@ -102,9 +123,9 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
-            display: flex; /* Use flexbox */
-            flex-direction: column; /* Stack children vertically */
-            align-items: center; /* Center children horizontally */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
         }
 
@@ -124,40 +145,39 @@
             color: #333;
             margin-bottom: 8px;
             line-height: 1.2;
-            word-break: break-word; /* Prevent long names from overflowing badly */
+            word-break: break-word;
         }
 
-        /* Container for the icons within each item */
         .software-item-links {
-            display: flex; /* Align icons horizontally */
-            gap: 18px; /* Space between icons */
-            margin-top: 8px; /* Space above the icons */
-            line-height: 1; /* Prevent extra line height */
+            display: flex;
+            gap: 18px;
+            margin-top: 8px;
+            line-height: 1;
         }
 
-        /* Common style for item icon links */
         .software-item-links a {
             text-decoration: none;
-            color: #888; /* Subtle default color */
+            color: #888;
             display: inline-block;
             transition: color 0.2s ease-in-out;
         }
         .software-item-links a:hover {
-            color: #79282a; /* Use header color for hover */
+            color: #79282a;
         }
+        /* Overriding default icon size specifically for item links */
         .software-item-links a .material-symbols-outlined {
-            font-size: 1.6em; /* Adjust icon size */
-            vertical-align: middle;
+            font-size: 1.6em;
         }
 
         .software-description {
-            display: none; /* Keep description hidden */
+            display: none;
         }
 
         /* Example Icon Colors */
         .icon-atlas { color: #007bff; }
         .icon-canva { color: #1e88e5; }
-        .icon-certiport { color: #4caf50; }
+        /* ... other icon color styles ... */
+         .icon-certiport { color: #4caf50; }
         .icon-conjuguemos { color: #ff9800; }
         .icon-crisisgo { color: #f44336; }
         .icon-gmail { color: #d32f2f; }
@@ -189,6 +209,7 @@
     </style>
 </head>
 <body>
+
     <header>
         <div id="search-container">
             <input type="text" id="search-input" placeholder="Search applications...">
@@ -202,9 +223,9 @@
             </a>
         </div>
     </header>
+
     <div class="container">
         <div class="software-grid" id="software-grid">
-
             <div class="software-item" data-name="Atlas">
                 <div class="software-icon icon-atlas">Atl</div>
                 <div class="software-name">Atlas</div>
@@ -218,8 +239,7 @@
                 </div>
                 <div class="software-description">Atlas</div>
             </div>
-
-            <div class="software-item" data-name="Canva">
+             <div class="software-item" data-name="Canva">
                 <div class="software-icon icon-canva">Can</div>
                 <div class="software-name">Canva</div>
                 <div class="software-item-links">
@@ -232,7 +252,6 @@
                 </div>
                 <div class="software-description">Canva</div>
             </div>
-
              <div class="software-item" data-name="Certiport">
                 <div class="software-icon icon-certiport">Cer</div>
                 <div class="software-name">Certiport</div>
@@ -246,8 +265,7 @@
                  </div>
                 <div class="software-description">Certiport</div>
             </div>
-
-            <div class="software-item" data-name="Conjuguemos">
+             <div class="software-item" data-name="Conjuguemos">
                 <div class="software-icon icon-conjuguemos">Con</div>
                 <div class="software-name">Conjuguemos</div>
                  <div class="software-item-links">
@@ -260,8 +278,7 @@
                  </div>
                 <div class="software-description">Conjuguemos</div>
             </div>
-
-            <div class="software-item" data-name="CrisisGO">
+             <div class="software-item" data-name="CrisisGO">
                 <div class="software-icon icon-crisisgo">Cri</div>
                 <div class="software-name">CrisisGO</div>
                  <div class="software-item-links">
@@ -274,7 +291,6 @@
                  </div>
                 <div class="software-description">CrisisGO</div>
             </div>
-
              <div class="software-item" data-name="GMail - Google">
                 <div class="software-icon icon-gmail">Gma</div>
                 <div class="software-name">GMail - Google</div>
@@ -288,7 +304,6 @@
                  </div>
                 <div class="software-description">GMail - Google</div>
             </div>
-
              <div class="software-item" data-name="Draft">
                 <div class="software-icon icon-draft">Dra</div>
                 <div class="software-name">Draft</div>
@@ -302,7 +317,6 @@
                  </div>
                 <div class="software-description">Draft</div>
             </div>
-
              <div class="software-item" data-name="Edlio">
                 <div class="software-icon icon-edlio">Edl</div>
                 <div class="software-name">Edlio</div>
@@ -316,7 +330,6 @@
                  </div>
                 <div class="software-description">Edlio</div>
             </div>
-
              <div class="software-item" data-name="EdPuzzle">
                 <div class="software-icon icon-edpuzzle">Edp</div>
                 <div class="software-name">EdPuzzle</div>
@@ -330,7 +343,6 @@
                  </div>
                 <div class="software-description">EdPuzzle</div>
             </div>
-
              <div class="software-item" data-name="EDUREADY360 LLC">
                 <div class="software-icon icon-eduready360">Edu</div>
                 <div class="software-name">EDUREADY360 LLC</div>
@@ -344,7 +356,6 @@
                  </div>
                 <div class="software-description">EDUREADY360 LLC</div>
             </div>
-
              <div class="software-item" data-name="Embark Corp">
                 <div class="software-icon icon-embark">Emb</div>
                 <div class="software-name">Embark Corp</div>
@@ -358,8 +369,7 @@
                  </div>
                 <div class="software-description">Embark Corp</div>
             </div>
-
-            <div class="software-item" data-name="FOLLETT SCHOOL (ACCESSIT)">
+             <div class="software-item" data-name="FOLLETT SCHOOL (ACCESSIT)">
                 <div class="software-icon icon-follett">Fol</div>
                 <div class="software-name">FOLLETT SCHOOL (ACCESSIT)</div>
                  <div class="software-item-links">
@@ -372,8 +382,7 @@
                  </div>
                 <div class="software-description">FOLLETT SCHOOL (ACCESSIT)</div>
             </div>
-
-            <div class="software-item" data-name="Freshservice">
+             <div class="software-item" data-name="Freshservice">
                  <div class="software-icon icon-freshservice">Fre</div>
                  <div class="software-name">Freshservice</div>
                   <div class="software-item-links">
@@ -386,8 +395,7 @@
                   </div>
                  <div class="software-description">Freshservice</div>
              </div>
-
-             <div class="software-item" data-name="Frontline">
+              <div class="software-item" data-name="Frontline">
                  <div class="software-icon icon-frontline">Fro</div>
                  <div class="software-name">Frontline</div>
                   <div class="software-item-links">
@@ -400,8 +408,7 @@
                   </div>
                  <div class="software-description">Frontline</div>
              </div>
-
-            <div class="software-item" data-name="Gimkit">
+             <div class="software-item" data-name="Gimkit">
                 <div class="software-icon icon-gimkit">Gim</div>
                 <div class="software-name">Gimkit</div>
                  <div class="software-item-links">
@@ -414,8 +421,7 @@
                  </div>
                 <div class="software-description">Gimkit</div>
             </div>
-
-            <div class="software-item" data-name="GitHub Desktop">
+             <div class="software-item" data-name="GitHub Desktop">
                 <div class="software-icon icon-github">Git</div>
                 <div class="software-name">GitHub Desktop</div>
                  <div class="software-item-links">
@@ -428,8 +434,7 @@
                  </div>
                 <div class="software-description">GitHub Desktop</div>
             </div>
-
-             <div class="software-item" data-name="GMetrix">
+              <div class="software-item" data-name="GMetrix">
                 <div class="software-icon icon-gmetrix">Gme</div>
                 <div class="software-name">GMetrix</div>
                  <div class="software-item-links">
@@ -442,7 +447,6 @@
                  </div>
                 <div class="software-description">GMetrix</div>
             </div>
-
              <div class="software-item" data-name="HIBster">
                 <div class="software-icon icon-hibster">Hib</div>
                 <div class="software-name">HIBster</div>
@@ -456,7 +460,6 @@
                  </div>
                 <div class="software-description">HIBster</div>
             </div>
-
              <div class="software-item" data-name="IXL">
                 <div class="software-icon icon-ixl">IXL</div>
                 <div class="software-name">IXL</div>
@@ -470,8 +473,7 @@
                  </div>
                 <div class="software-description">IXL</div>
             </div>
-
-            <div class="software-item" data-name="Link It">
+             <div class="software-item" data-name="Link It">
                  <div class="software-icon icon-linkit">Lin</div>
                  <div class="software-name">Link It</div>
                   <div class="software-item-links">
@@ -484,8 +486,7 @@
                   </div>
                  <div class="software-description">Link It</div>
              </div>
-
-             <div class="software-item" data-name="Minecraft">
+              <div class="software-item" data-name="Minecraft">
                  <div class="software-icon icon-minecraft">Min</div>
                  <div class="software-name">Minecraft</div>
                   <div class="software-item-links">
@@ -498,8 +499,7 @@
                   </div>
                  <div class="software-description">Minecraft</div>
              </div>
-
-             <div class="software-item" data-name="Naviance">
+              <div class="software-item" data-name="Naviance">
                  <div class="software-icon icon-naviance">Nav</div>
                  <div class="software-name">Naviance</div>
                   <div class="software-item-links">
@@ -512,8 +512,7 @@
                   </div>
                  <div class="software-description">Naviance</div>
              </div>
-
-             <div class="software-item" data-name="NEWSELA">
+              <div class="software-item" data-name="NEWSELA">
                  <div class="software-icon icon-newsela">New</div>
                  <div class="software-name">NEWSELA</div>
                   <div class="software-item-links">
@@ -526,8 +525,7 @@
                   </div>
                  <div class="software-description">NEWSELA</div>
              </div>
-
-             <div class="software-item" data-name="Notable">
+              <div class="software-item" data-name="Notable">
                  <div class="software-icon icon-notable">Not</div>
                  <div class="software-name">Notable</div>
                   <div class="software-item-links">
@@ -540,8 +538,7 @@
                   </div>
                  <div class="software-description">Notable</div>
              </div>
-
-            <div class="software-item" data-name="Noteflight">
+             <div class="software-item" data-name="Noteflight">
                  <div class="software-icon icon-noteflight">Not</div>
                  <div class="software-name">Noteflight</div>
                   <div class="software-item-links">
@@ -554,8 +551,7 @@
                   </div>
                  <div class="software-description">Noteflight</div>
             </div>
-
-            <div class="software-item" data-name="Padlet">
+             <div class="software-item" data-name="Padlet">
                  <div class="software-icon icon-padlet">Pad</div>
                  <div class="software-name">Padlet</div>
                   <div class="software-item-links">
@@ -568,8 +564,7 @@
                   </div>
                  <div class="software-description">Padlet</div>
             </div>
-
-            <div class="software-item" data-name="Pear Deck">
+              <div class="software-item" data-name="Pear Deck">
                  <div class="software-icon icon-pear">Pea</div>
                  <div class="software-name">Pear Deck</div>
                   <div class="software-item-links">
@@ -582,8 +577,7 @@
                   </div>
                  <div class="software-description">Pear Deck</div>
              </div>
-
-            <div class="software-item" data-name="Quizet">
+             <div class="software-item" data-name="Quizet">
                 <div class="software-icon icon-quizet">Qui</div>
                 <div class="software-name">Quizet</div>
                  <div class="software-item-links">
@@ -596,8 +590,7 @@
                  </div>
                 <div class="software-description">Quizet</div>
             </div>
-
-            <div class="software-item" data-name="RealTime">
+             <div class="software-item" data-name="RealTime">
                 <div class="software-icon icon-realtime">Rea</div>
                 <div class="software-name">RealTime</div>
                  <div class="software-item-links">
@@ -610,8 +603,7 @@
                  </div>
                 <div class="software-description">RealTime</div>
             </div>
-
-            <div class="software-item" data-name="Ring Central">
+              <div class="software-item" data-name="Ring Central">
                 <div class="software-icon icon-ringcentral">Rin</div>
                 <div class="software-name">Ring Central</div>
                  <div class="software-item-links">
@@ -629,40 +621,18 @@
 
     <script>
         const searchInput = document.getElementById('search-input');
-        const softwareGrid = document.getElementById('software-grid'); // Target grid for efficiency
-        const softwareItems = softwareGrid.querySelectorAll('.software-item'); // Get items once
+        const softwareGrid = document.getElementById('software-grid');
+        const softwareItems = softwareGrid.querySelectorAll('.software-item');
 
         searchInput.addEventListener('input', function() {
-            const searchTerm = searchInput.value.toLowerCase().trim(); // Trim whitespace
+            const searchTerm = searchInput.value.toLowerCase().trim();
 
             softwareItems.forEach(item => {
-                // Check if dataset.name exists before accessing it
                 const itemName = item.dataset.name ? item.dataset.name.toLowerCase() : '';
-                // Simple check if item name includes search term
                 const isMatch = itemName.includes(searchTerm);
-                 // Set display based on match
-                item.style.display = isMatch ? 'flex' : 'none'; // Use flex as per CSS
+                item.style.display = isMatch ? 'flex' : 'none';
             });
         });
-
-        // Optional: Click listener for the whole item (excluding icon links)
-        /*
-        softwareGrid.addEventListener('click', (event) => {
-            // Find the closest software-item ancestor
-            const item = event.target.closest('.software-item');
-            if (!item) return; // Exit if click wasn't inside an item
-
-            // Check if the click was on one of the icon links within the item
-            if (event.target.closest('.software-item-links a')) {
-                return; // Exit if an icon link was clicked
-            }
-
-            // Proceed with action for clicking the item itself
-            const appName = item.dataset.name;
-            console.log(`Maps to details for ${appName}`);
-            // Example: window.location.href = `/app/${appName.toLowerCase().replace(/ /g, '-')}`;
-        });
-        */
     </script>
 </body>
 </html>
