@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Selection</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white; /* Changed background color to white */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #search-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax for better alignment */
+            gap: 20px;
+        }
+
+        .software-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px; /* Reduced padding for better alignment */
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Align items vertically */
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .software-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .software-icon {
+            font-size: 2.5em; /* Adjusted icon size */
+            margin-right: 15px; /* Add margin to separate icon and text */
+            color: #555;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        .software-name {
+            font-weight: bold;
+            color: #333;
+            flex-grow: 1; /* Allow name to grow and take remaining space */
+            text-align: left; /* Align text to the left */
+        }
+
+        .software-description {
+            color: #777;
+            display: none; /* Hide description */
+        }
+
+        /* Example Icon Colors (Replace with actual icons or images) */
+        .icon-ae { color: purple; }
+        .icon-an { color: red; }
+        .icon-au { color: green; }
+        .icon-ch { color: #800080; } /* Dark Purple */
+        .icon-ai { color: #008080; } /* Teal */
+        .icon-id { color: #FF69B4; } /* Hot Pink */
+        .icon-lr { color: #808080; } /* Gray */
+        .icon-me { color: #8B008B; } /* Dark Magenta */
+        .icon-ps { color: #0000FF; } /* Blue */
+        .icon-pi { color: #00CED1; } /* Dark Turquoise */
+        .icon-cc { color: #A9A9A9; } /* Dark Gray */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ACIT - Software and Applications</h1>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search applications...">
+        </div>
+        <div class="software-grid" id="software-grid">
+            <div class="software-item" data-name="EduNovela">
+                <div class="software-icon">Edu</div>
+                <div class="software-name">EduNovela</div>
+                <div class="software-description">EduNovela</div>
+            </div>
+            <div class="software-item" data-name="Adobe AfterEffects">
+                <div class="software-icon icon-ae">Ae</div>
+                <div class="software-name">Adobe AfterEffects</div>
+                <div class="software-description">Adobe AfterEffects</div>
+            </div>
+            <div class="software-item" data-name="Adobe Animate">
+                <div class="software-icon icon-an">An</div>
+                <div class="software-name">Adobe Animate</div>
+                <div class="software-description">Adobe Animate</div>
+            </div>
+            <div class="software-item" data-name="Adobe Audition">
+                <div class="software-icon icon-au">Au</div>
+                <div class="software-name">Adobe Audition</div>
+                <div class="software-description">Adobe Audition</div>
+            </div>
+            <div class="software-item" data-name="Adobe CharAnimator">
+                <div class="software-icon icon-ch">Ch</div>
+                <div class="software-name">Adobe CharAnimator</div>
+                <div class="software-description">Adobe CharAnimator</div>
+            </div>
+            <div class="software-item" data-name="Adobe Creative Cloud">
+                <div class="software-icon icon-cc">CC</div>
+                <div class="software-name">Adobe Creative Cloud</div>
+                <div class="software-description">Adobe Creative Cloud</div>
+            </div>
+            <div class="software-item" data-name="Adobe Illustrator">
+                <div class="software-icon icon-ai">Ai</div>
+                <div class="software-name">Adobe Illustrator</div>
+                <div class="software-description">Adobe Illustrator</div>
+            </div>
+            <div class="software-item" data-name="Adobe InDesign">
+                <div class="software-icon icon-id">Id</div>
+                <div class="software-name">Adobe InDesign</div>
+                <div class="software-description">Adobe InDesign</div>
+            </div>
+            <div class="software-item" data-name="Adobe Lightroom">
+                <div class="software-icon icon-lr">Lr</div>
+                <div class="software-name">Adobe Lightroom</div>
+                <div class="software-description">Adobe Lightroom</div>
+            </div>
+            <div class="software-item" data-name="Adobe MediaEncoder">
+                <div class="software-icon icon-me">Me</div>
+                <div class="software-name">Adobe MediaEncoder</div>
+                <div class="software-description">Adobe MediaEncoder</div>
+            </div>
+            <div class="software-item" data-name="Adobe Photoshop">
+                <div class="software-icon icon-ps">Ps</div>
+                <div class="software-name">Adobe Photoshop</div>
+                <div class="software-description">Adobe Photoshop</div>
+            </div>
+            <div class="software-item" data-name="Adobe Prelude">
+                <div class="software-icon icon-pi">Pi</div>
+                <div class="software-name">Adobe Prelude</div>
+                <div class="software-description">Adobe Prelude</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const softwareItems = document.querySelectorAll('.software-item');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            softwareItems.forEach(item => {
+                const itemName = item.dataset.name.toLowerCase();
+                if (itemName.includes(searchTerm)) {
+                    item.style.display = 'flex'; // Use flex to maintain alignment
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
