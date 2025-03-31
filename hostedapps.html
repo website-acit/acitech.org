@@ -29,7 +29,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px; /* Explicitly set the header height */
+            height: 60px;
         }
 
         .container {
@@ -47,7 +47,7 @@
         #search-container {
             display: flex;
             align-items: center;
-            height: 100%; /* Make the search container fill the header height */
+            height: 100%;
         }
 
         #search-input {
@@ -69,13 +69,13 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            text-align: center; /* Center text within elements */
+            text-align: center;
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
-            display: flex; /* Use flexbox */
-            flex-direction: column; /* Stack children vertically */
-            align-items: center; /* Center children horizontally */
-            justify-content: center; /* Distribute space if needed, or use center */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .software-item:hover {
@@ -86,41 +86,38 @@
             font-size: 3em;
             margin-bottom: 10px;
             color: #555;
-            line-height: 1; /* Prevent extra space */
+            line-height: 1;
         }
 
         .software-name {
             font-weight: bold;
             color: #333;
-            margin-bottom: 8px; /* Add space below name, before help icon */
-            line-height: 1.2; /* Adjust line height if names wrap */
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
 
-        /* Style for the new help link */
         .software-help-link {
-            text-decoration: none; /* Remove underline */
-            color: #888; /* Subtle default color */
-            display: inline-block; /* Treat as inline block */
-            line-height: 1; /* Prevent extra space */
-            margin-top: 5px; /* Optional: space above help icon if needed */
-            transition: color 0.2s ease-in-out; /* Smooth hover effect */
+            text-decoration: none;
+            color: #888;
+            display: inline-block;
+            line-height: 1;
+            margin-top: 5px;
+            transition: color 0.2s ease-in-out;
         }
 
         .software-help-link .material-symbols-outlined {
-            font-size: 1.5em; /* Adjust icon size */
-            vertical-align: middle; /* Align icon nicely */
+            font-size: 1.5em;
+            vertical-align: middle;
         }
 
         .software-help-link:hover {
-            color: #79282a; /* Use header color for hover */
+            color: #79282a;
         }
-
 
         .software-description {
-            display: none; /* Keep description hidden */
+            display: none;
         }
 
-        /* Example Icon Colors (Keep as is) */
         .icon-atlas { color: #007bff; }
         .icon-canva { color: #1e88e5; }
         .icon-certiport { color: #4caf50; }
@@ -157,7 +154,7 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            margin-left: 10px; /* Add some space between links */
+            margin-left: 10px;
         }
 
         #help-link span, #knowledge-base-link span {
@@ -433,7 +430,7 @@
             softwareItems.forEach(item => {
                 const itemName = item.dataset.name.toLowerCase();
                 if (itemName.includes(searchTerm)) {
-                    item.style.display = 'flex'; // Change to flex since we changed display property
+                    item.style.display = 'flex';
                 } else {
                     item.style.display = 'none';
                 }
