@@ -29,6 +29,7 @@
             justify-content: space-between;
             align-items: center;
             height: 60px; /* Explicitly set the header height */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
         }
 
         .container {
@@ -161,6 +162,13 @@
         #help-link span {
             margin-right: 5px;
         }
+
+         .header-links {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping of help links */
+            gap: 10px; /* Add gap between links */
+        }
+        
     </style>
 </head>
 <body>
