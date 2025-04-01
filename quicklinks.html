@@ -20,31 +20,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-
-        header {
-            background-color: #79282a;
-            padding: 10px 20px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px; /* Explicitly set the header height */
-            flex-wrap: wrap; /* Allow wrapping on small screens */
-        }
-
-        @media (max-width: 600px) { /* Adjust breakpoint as needed */
-            header {
-                height: auto; /* Allow header to expand */
-                align-items: flex-start; /* Align items to top on wrap */
-            }
-            #search-container, .header-links {
-                width: 100%; /* Take full width on small screens */
-            }
-            #search-container {
-                margin-bottom: 10px;
-            }
-        }
-       
+      
         .container {
             max-width: 960px;
             margin: 20px auto;
@@ -290,23 +266,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        const searchInput = document.getElementById('search-input');
-        const softwareItems = document.querySelectorAll('.software-item');
-
-        searchInput.addEventListener('input', function() {
-            const searchTerm = searchInput.value.toLowerCase();
-
-            softwareItems.forEach(item => {
-                const softwareName = item.dataset.name.toLowerCase();
-                if (softwareName.includes(searchTerm)) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
