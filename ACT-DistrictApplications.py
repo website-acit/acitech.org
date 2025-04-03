@@ -20,7 +20,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACIT Quick Links</title>
+    <title>ACIT District Applications</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
         .material-symbols-outlined {
@@ -72,6 +72,10 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
             text-align: left;
             margin-bottom: 20px;
             color: #333;
+        }
+
+        .icon-color {
+            color: #79282a
         }
 
         #search-container {
@@ -177,7 +181,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
                     html += f"""
             <div class="software-item" data-name="{name}">
                 <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
-                    <span class="software-icon icon-atlas material-symbols-outlined">Apps</span>
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">Apps</span>
                     <div class="software-name">{name}</div>
                 </a>
                 <div class="software-help-container">
