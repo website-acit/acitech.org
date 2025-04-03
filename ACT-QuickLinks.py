@@ -2,7 +2,8 @@ import csv
 
 def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.html"):
     """
-    Generates an HTML page with quick links from a CSV file, with a Google Workspace for Education section.
+    Generates an HTML page with quick links from a CSV file, with three sections:
+    Common Links, Google Workspace for Education, and Other Links, with specific links in each section.
 
     Args:
         csv_file_path (str): The path to the CSV file.
@@ -150,10 +151,11 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.htm
 </head>
 <body>
     <div class="container">
-        <h2 class="section-title">Google Workspace for Education</h2>
-        <div class="software-grid" id="google-workspace-grid">
+        <h2 class="section-title">Common Links</h2>
+        <div class="software-grid" id="common-links-grid">
 """
 
+            common_items = []
             google_workspace_items = []
             other_items = []
 
@@ -162,29 +164,37 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.htm
 
                 if name and link and icon_url:
                     item_html = f"""
-            <div class="software-item" data-name="{name}">
-                <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
-                    <div class="software-icon">
-                        <img width="40" height="40" src="{icon_url}" alt="{name}"/>
-                    </div>
-                    <div class="software-name">{name}</div>
-                </a>
-                <div class="software-help-container">
-                    <a href="{knowledge_base_link}" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
-                        <span class="material-symbols-outlined">description</span>
-                    </a>
-                    <a href="{help_link}" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
-                        <span class="material-symbols-outlined">support_agent</span>
-                    </a>
+        <div class="software-item" data-name="{name}">
+            <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="software-icon">
+                    <img width="40" height="40" src="{icon_url}" alt="{name}"/>
                 </div>
-                <div class="software-description">{name}</div>
+                <div class="software-name">{name}</div>
+            </a>
+            <div class="software-help-container">
+                <a href="{knowledge_base_link}" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                    <span class="material-symbols-outlined">description</span>
+                </a>
+                <a href="{help_link}" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                    <span class="material-symbols-outlined">support_agent</span>
+                </a>
             </div>
+            <div class="software-description">{name}</div>
+        </div>
                     """
-                    if name in ["Classroom", "Drive", "Gmail", "Gemini"]:
+                    if name in ["Realtime", "Smartpass", "Classwize", "Freshservice"]:
+                        common_items.append(item_html)
+                    elif name in ["Classroom", "Drive", "Gemini", "Gmail"]:
                         google_workspace_items.append(item_html)
                     else:
                         other_items.append(item_html)
 
+            html += "\n".join(common_items)
+            html += """
+        </div>
+        <h2 class="section-title">Google Workspace for Education</h2>
+        <div class="software-grid" id="google-workspace-grid">
+"""
             html += "\n".join(google_workspace_items)
             html += """
         </div>
@@ -199,10 +209,10 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.htm
 </html>
 """
 
-        with open(output_html_path, 'w', encoding='utf-8') as html_file:
-            html_file.write(html)
+            with open(output_html_path, 'w', encoding='utf-8') as html_file:
+                html_file.write(html)
 
-        print(f"HTML file '{output_html_path}' created successfully.")
+            print(f"HTML file '{output_html_path}' created successfully.")
 
     except FileNotFoundError:
         print(f"Error: CSV file '{csv_file_path}' not found.")
