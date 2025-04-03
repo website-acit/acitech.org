@@ -38,6 +38,30 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
             background-color: #ffffff;
         }
 
+         header {
+            background-color: #79282a;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px; /* Explicitly set the header height */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+                @media (max-width: 600px) { /* Adjust breakpoint as needed */
+            header {
+                height: auto; /* Allow header to expand */
+                align-items: flex-start; /* Align items to top on wrap */
+            }
+            #search-container, .header-links {
+                width: 100%; /* Take full width on small screens */
+            }
+            #search-container {
+                margin-bottom: 10px;
+            }
+        }
+
         .container {
             max-width: 960px;
             margin: 20px auto;
