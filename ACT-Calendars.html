@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACIT Calendars</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 20
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        header {
+            background-color: #79282a;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: flex-start; /* Left justify header content */
+            align-items: center;
+            height: 60px; /* Explicitly set the header height */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+        @media (max-width: 600px) { /* Adjust breakpoint as needed */
+            header {
+                height: auto; /* Allow header to expand */
+                align-items: flex-start; /* Align items to top on wrap */
+            }
+            #search-container, .header-links {
+                width: 100%; /* Take full width on small screens */
+            }
+            #search-container {
+                margin-bottom: 10px;
+            }
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .icon-color {
+            color: #79282a
+        }
+
+        #search-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+        }
+
+        .software-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .software-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .software-icon {
+            font-size: 3em;
+            margin-bottom: 5px;
+            color: #555;
+            line-height: 1;
+        }
+
+        .software-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .software-help-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .software-help-link {
+            text-decoration: none;
+            color: #888;
+            display: inline-block;
+            line-height: 1;
+            margin-top: 5px;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .software-help-link .material-symbols-outlined {
+            font-size: 1.5em;
+            vertical-align: middle;
+        }
+
+        .software-help-link:hover {
+            color: #79282a;
+        }
+
+        .software-description {
+            display: none;
+        }
+
+        #help-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #help-link span {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search Calendars...">
+        </div>
+    </header>
+    <div class="container">
+        <div class="software-grid" id="software-grid">
+
+            <div class="software-item" data-name="Daily Calendar">
+                <a href="https://calendar.google.com/calendar/u/0?cid=YWNpdGVjaC5vcmdfaWhrbWc2M2podHM3NWczMHVvNWFnazloODRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">calendar_month</span>
+                    <div class="software-name">Daily Calendar</div>
+                </a>
+                <div class="software-description">Daily Calendar</div>
+            </div>
+            
+            <div class="software-item" data-name="Testing Calendar">
+                <a href="https://calendar.google.com/calendar/u/0?cid=YWNpdGVjaC5vcmdfbWdlNDVxdGI0cGU2Z28wanRyYzM5azhocjhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">calendar_month</span>
+                    <div class="software-name">Testing Calendar</div>
+                </a>
+                <div class="software-description">Testing Calendar</div>
+            </div>
+            
+            <div class="software-item" data-name="Feild Trip Calendar">
+                <a href="https://calendar.google.com/calendar/u/0?cid=YWNpdGVjaC5vcmdfMWg4dTRpamJzaWxkbGVnbHQ5NHF0NjBmNXNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">calendar_month</span>
+                    <div class="software-name">Feild Trip Calendar</div>
+                </a>
+                <div class="software-description">Feild Trip Calendar</div>
+            </div>
+            
+            <div class="software-item" data-name="PD Calendar">
+                <a href="https://calendar.google.com/calendar/u/0?cid=YWNpdGVjaC5vcmdfZmxrYnVudG90djF2M2Q3M2U1OW1pYWxydTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQe" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">calendar_month</span>
+                    <div class="software-name">PD Calendar</div>
+                </a>
+                <div class="software-description">PD Calendar</div>
+            </div>
+            
+            <div class="software-item" data-name="Meeting Calendar">
+                <a href="https://docs.google.com/spreadsheets/d/18HixvHLjprFfCWfZfe1EWhwCc5mkwoA17XjrCSWTb_A/edit?gid=2013219243#gid=2013219243" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">calendar_month</span>
+                    <div class="software-name">Meeting Calendar</div>
+                </a>
+                <div class="software-description">Meeting Calendar</div>
+            </div>
+            
+            <div class="software-item" data-name="SEL Cultural Calendar">
+                <a href="https://docs.google.com/spreadsheets/d/1i4AahMX-0xQKPaWrVRJo6oYm46UakQZzX5aZvW0kujI/edit?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">calendar_month</span>
+                    <div class="software-name">SEL Cultural Calendar</div>
+                </a>
+                <div class="software-description">SEL Cultural Calendar</div>
+            </div>
+            
+            <div class="software-item" data-name="Tutoring Calendar">
+                <a href="https://docs.google.com/spreadsheets/d/1Hj4bzLvUsEJJd2_NwxPA0sdYVEnP2eyeSOovdlnYh88/edit?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">calendar_month</span>
+                    <div class="software-name">Tutoring Calendar</div>
+                </a>
+                <div class="software-description">Tutoring Calendar</div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const softwareItems = document.querySelectorAll('.software-item');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            softwareItems.forEach(item => {
+                const softwareName = item.dataset.name.toLowerCase();
+                if (softwareName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
