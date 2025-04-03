@@ -174,6 +174,13 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-Calendars.html
         <div id="search-container">
             <input type="text" id="search-input" placeholder="Search Calendars...">
         </div>
+        <div class="header-links">
+            <div class="software-help-container">
+                <a id="help-link" href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/540" target="_blank" rel="noopener noreferrer">
+                    <span class="material-symbols-outlined">support_agent</span> Get Help
+                </a>
+            </div>
+        </div>
     </header>
     <div class="container">
         <div class="software-grid" id="software-grid">
