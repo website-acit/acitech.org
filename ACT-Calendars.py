@@ -43,7 +43,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-Calendars.html
             padding: 10px 20px;
             color: white;
             display: flex;
-            justify-content: flex-start; /* Left justify header content */
+            justify-content: space-between;
             align-items: center;
             height: 60px; /* Explicitly set the header height */
             flex-wrap: wrap; /* Allow wrapping on small screens */
