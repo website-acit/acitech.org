@@ -1,6 +1,6 @@
 import csv
 
-def generate_quicklinks_html(csv_file_path, output_html_path="quicklinks.html"):
+def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplications.html"):
     """
     Generates an HTML page with quick links from a CSV file.
 
@@ -147,14 +147,14 @@ def generate_quicklinks_html(csv_file_path, output_html_path="quicklinks.html"):
 """
 
             for row in reader:
-                name, link, icon_url, knowledge_base_link, help_link = row
+                name, link, knowledge_base_link, help_link = row
 
-                if name and link and icon_url:
+                if name and link:
                     html += f"""
             <div class="software-item" data-name="{name}">
                 <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="{icon_url}" alt="{name}"/>
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="{name}"/>
                     </div>
                     <div class="software-name">{name}</div>
                 </a>
@@ -188,4 +188,4 @@ def generate_quicklinks_html(csv_file_path, output_html_path="quicklinks.html"):
         print(f"An error occurred: {e}")
 
 # Example usage (replace 'your_file.csv' with the actual path to your CSV file)
-generate_quicklinks_html('quicklinks.csv')
+generate_quicklinks_html('ACT-DistrictApplications.csv')

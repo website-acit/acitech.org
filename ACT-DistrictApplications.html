@@ -1,0 +1,981 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACIT Quick Links</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 20
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #search-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+        }
+
+        .software-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .software-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .software-icon {
+            font-size: 3em;
+            margin-bottom: 5px;
+            color: #555;
+            line-height: 1;
+        }
+
+        .software-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .software-help-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .software-help-link {
+            text-decoration: none;
+            color: #888;
+            display: inline-block;
+            line-height: 1;
+            margin-top: 5px;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .software-help-link .material-symbols-outlined {
+            font-size: 1.5em;
+            vertical-align: middle;
+        }
+
+        .software-help-link:hover {
+            color: #79282a;
+        }
+
+        .software-description {
+            display: none;
+        }
+
+        #help-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #help-link span {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="software-grid" id="software-grid">
+
+            <div class="software-item" data-name="Apex">
+                <a href="https://www.apexvs.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Apex"/>
+                    </div>
+                    <div class="software-name">Apex</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Apex" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Apex</div>
+            </div>
+            
+            <div class="software-item" data-name="Canva">
+                <a href="https://www.canva.com/login/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Canva"/>
+                    </div>
+                    <div class="software-name">Canva</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Canva" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/532" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Canva</div>
+            </div>
+            
+            <div class="software-item" data-name="Certiport">
+                <a href="https://app.certiport.com/portal/login" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Certiport"/>
+                    </div>
+                    <div class="software-name">Certiport</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Certiport" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/484" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Certiport</div>
+            </div>
+            
+            <div class="software-item" data-name="Clever">
+                <a href="http://clever.com/in/acvsd" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Clever"/>
+                    </div>
+                    <div class="software-name">Clever</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Clever" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Clever</div>
+            </div>
+            
+            <div class="software-item" data-name="Comics Plus">
+                <a href="https://login.librarypass.com/?library=atlanticcountyinstituteoftechnologynj&domain=librarypass.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Comics Plus"/>
+                    </div>
+                    <div class="software-name">Comics Plus</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Comics" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Comics Plus</div>
+            </div>
+            
+            <div class="software-item" data-name="Conjuguemos">
+                <a href="https://conjuguemos.com/auth/login" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Conjuguemos"/>
+                    </div>
+                    <div class="software-name">Conjuguemos</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Conjuguemos" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/505" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Conjuguemos</div>
+            </div>
+            
+            <div class="software-item" data-name="CrisisGO">
+                <a href="https://crisisgo.net/index.php?r=login&w=ACITechNJ&rnd=692101647" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="CrisisGO"/>
+                    </div>
+                    <div class="software-name">CrisisGO</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=CrisisGO" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">CrisisGO</div>
+            </div>
+            
+            <div class="software-item" data-name="Ebsco Database">
+                <a href="https://search.ebscohost.com/login.aspx?authtype=sso&custid=sjrlc015&groupid=main&profile=ehost" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Ebsco Database"/>
+                    </div>
+                    <div class="software-name">Ebsco Database</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Ebsco" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/413" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Ebsco Database</div>
+            </div>
+            
+            <div class="software-item" data-name="Edario">
+                <a href="https://www.edario.com/app/login" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Edario"/>
+                    </div>
+                    <div class="software-name">Edario</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Edario" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Edario</div>
+            </div>
+            
+            <div class="software-item" data-name="Edmentum">
+                <a href="https://clever.com/oauth/instant-login?client_id=a1b0dea1b35421f32fc7&district_id=57054477dde74301000000fd" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Edmentum"/>
+                    </div>
+                    <div class="software-name">Edmentum</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Edmentum" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Edmentum</div>
+            </div>
+            
+            <div class="software-item" data-name="EdPuzzle">
+                <a href="https://edpuzzle.com/schools/join/network/baxkf9" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="EdPuzzle"/>
+                    </div>
+                    <div class="software-name">EdPuzzle</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=EdPuzzle" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/488" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">EdPuzzle</div>
+            </div>
+            
+            <div class="software-item" data-name="Eduready360">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Eduready360"/>
+                    </div>
+                    <div class="software-name">Eduready360</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Eduready" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Eduready360</div>
+            </div>
+            
+            <div class="software-item" data-name="Embark">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Embark"/>
+                    </div>
+                    <div class="software-name">Embark</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Embark" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/526" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Embark</div>
+            </div>
+            
+            <div class="software-item" data-name="FitnessGram">
+                <a href="https://myhealthyzone.fitnessgram.net/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="FitnessGram"/>
+                    </div>
+                    <div class="software-name">FitnessGram</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=FitnessGram" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">FitnessGram</div>
+            </div>
+            
+            <div class="software-item" data-name="Follett School (Accessit)">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Follett School (Accessit)"/>
+                    </div>
+                    <div class="software-name">Follett School (Accessit)</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Accessit" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Follett School (Accessit)</div>
+            </div>
+            
+            <div class="software-item" data-name="Formative">
+                <a href="http://formative.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Formative"/>
+                    </div>
+                    <div class="software-name">Formative</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Formative" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Formative</div>
+            </div>
+            
+            <div class="software-item" data-name="Freshservice">
+                <a href="https://servicedesk.acitech.org/login" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Freshservice"/>
+                    </div>
+                    <div class="software-name">Freshservice</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Service" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/501" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Freshservice</div>
+            </div>
+            
+            <div class="software-item" data-name="Frontline">
+                <a href="https://login.frontlineeducation.com/sso/googleappsforacitech" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Frontline"/>
+                    </div>
+                    <div class="software-name">Frontline</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Frontline" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/490" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Frontline</div>
+            </div>
+            
+            <div class="software-item" data-name="Gale: Human Anatomy Interactive">
+                <a href="https://link.gale.com/apps/IANAT?u=mays66015" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Gale: Human Anatomy Interactive"/>
+                    </div>
+                    <div class="software-name">Gale: Human Anatomy Interactive</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Gale" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Gale: Human Anatomy Interactive</div>
+            </div>
+            
+            <div class="software-item" data-name="Gale: Opposing Viewpoints">
+                <a href="https://go.gale.com/ps/start.do?p=OVIC&u=mays66015" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Gale: Opposing Viewpoints"/>
+                    </div>
+                    <div class="software-name">Gale: Opposing Viewpoints</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Gale" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Gale: Opposing Viewpoints</div>
+            </div>
+            
+            <div class="software-item" data-name="Gale: Science">
+                <a href="https://link.gale.com/apps/SCIC?u=mays66015" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Gale: Science"/>
+                    </div>
+                    <div class="software-name">Gale: Science</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Gale" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Gale: Science</div>
+            </div>
+            
+            <div class="software-item" data-name="Gale: US History">
+                <a href="https://link.gale.com/apps/UHIC?u=mays66015" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Gale: US History"/>
+                    </div>
+                    <div class="software-name">Gale: US History</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Gale" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Gale: US History</div>
+            </div>
+            
+            <div class="software-item" data-name="Gale: World History">
+                <a href="https://link.gale.com/apps/WHIC?u=mays66015" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Gale: World History"/>
+                    </div>
+                    <div class="software-name">Gale: World History</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Gale" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Gale: World History</div>
+            </div>
+            
+            <div class="software-item" data-name="Gimkit">
+                <a href="https://www.gimkit.com/login" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Gimkit"/>
+                    </div>
+                    <div class="software-name">Gimkit</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Gimkit" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/491" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Gimkit</div>
+            </div>
+            
+            <div class="software-item" data-name="GitHub">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="GitHub"/>
+                    </div>
+                    <div class="software-name">GitHub</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=GitHub" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/416" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">GitHub</div>
+            </div>
+            
+            <div class="software-item" data-name="GMetrix">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="GMetrix"/>
+                    </div>
+                    <div class="software-name">GMetrix</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=GMetrix" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/417" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">GMetrix</div>
+            </div>
+            
+            <div class="software-item" data-name="Hibster">
+                <a href="https://hib.hibster.com/login.aspx" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Hibster"/>
+                    </div>
+                    <div class="software-name">Hibster</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Hibster" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/478" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Hibster</div>
+            </div>
+            
+            <div class="software-item" data-name="IXL">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="IXL"/>
+                    </div>
+                    <div class="software-name">IXL</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=IXL" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/509" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">IXL</div>
+            </div>
+            
+            <div class="software-item" data-name="Jotform">
+                <a href="https://acitech.jotform.com/myforms/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Jotform"/>
+                    </div>
+                    <div class="software-name">Jotform</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Jotform" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Jotform</div>
+            </div>
+            
+            <div class="software-item" data-name="JStor Database">
+                <a href="https://www.jstor.org/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="JStor Database"/>
+                    </div>
+                    <div class="software-name">JStor Database</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=JStor" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">JStor Database</div>
+            </div>
+            
+            <div class="software-item" data-name="Link It">
+                <a href="https://acitech.linkit.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Link It"/>
+                    </div>
+                    <div class="software-name">Link It</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Linkit" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/479" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Link It</div>
+            </div>
+            
+            <div class="software-item" data-name="Minecraft">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Minecraft"/>
+                    </div>
+                    <div class="software-name">Minecraft</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Minecraft" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/431" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Minecraft</div>
+            </div>
+            
+            <div class="software-item" data-name="Naviance">
+                <a href="https://succeed.naviance.com/auth/signin" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Naviance"/>
+                    </div>
+                    <div class="software-name">Naviance</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Naviance" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/476" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Naviance</div>
+            </div>
+            
+            <div class="software-item" data-name="New York Times">
+                <a href="https://myaccount.nytimes.com/verification/edupass" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="New York Times"/>
+                    </div>
+                    <div class="software-name">New York Times</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=NYT" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">New York Times</div>
+            </div>
+            
+            <div class="software-item" data-name="Newsela">
+                <a href="https://newsela.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Newsela"/>
+                    </div>
+                    <div class="software-name">Newsela</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Newsela" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/504" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Newsela</div>
+            </div>
+            
+            <div class="software-item" data-name="Notable">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Notable"/>
+                    </div>
+                    <div class="software-name">Notable</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Notable" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/508" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Notable</div>
+            </div>
+            
+            <div class="software-item" data-name="Noteflight">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Noteflight"/>
+                    </div>
+                    <div class="software-name">Noteflight</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Noteflight" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/499" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Noteflight</div>
+            </div>
+            
+            <div class="software-item" data-name="Padlet">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Padlet"/>
+                    </div>
+                    <div class="software-name">Padlet</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Padlet" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/527" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Padlet</div>
+            </div>
+            
+            <div class="software-item" data-name="PaperCut">
+                <a href="http://papercut.acitech.org:9191/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="PaperCut"/>
+                    </div>
+                    <div class="software-name">PaperCut</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=PaperCut" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/433" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">PaperCut</div>
+            </div>
+            
+            <div class="software-item" data-name="Pear Deck">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Pear Deck"/>
+                    </div>
+                    <div class="software-name">Pear Deck</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Pear" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/498" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Pear Deck</div>
+            </div>
+            
+            <div class="software-item" data-name="PrintDeploy">
+                <a href="http://papercut.acitech.org:9191/print-deploy/client/macos" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="PrintDeploy"/>
+                    </div>
+                    <div class="software-name">PrintDeploy</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Print%20Deploy" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">PrintDeploy</div>
+            </div>
+            
+            <div class="software-item" data-name="Quizet">
+                <a href="https://www.google.com" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Quizet"/>
+                    </div>
+                    <div class="software-name">Quizet</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Quizet" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/497" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Quizet</div>
+            </div>
+            
+            <div class="software-item" data-name="Ring Central">
+                <a href="https://service.ringcentral.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Ring Central"/>
+                    </div>
+                    <div class="software-name">Ring Central</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Ring%20Central" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/441" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Ring Central</div>
+            </div>
+            
+            <div class="software-item" data-name="Safe Schools">
+                <a href="https://acvsd-nj.safeschools.com/login" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="Safe Schools"/>
+                    </div>
+                    <div class="software-name">Safe Schools</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Safe%20Schools" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Safe Schools</div>
+            </div>
+            
+            <div class="software-item" data-name="School Messenger">
+                <a href="https://asp.schoolmessenger.com/acitech" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="School Messenger"/>
+                    </div>
+                    <div class="software-name">School Messenger</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=School%20Messenger" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/473" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">School Messenger</div>
+            </div>
+            
+            <div class="software-item" data-name="SORA E-Library">
+                <a href="https://soraapp.com/library/njssc" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="SORA E-Library"/>
+                    </div>
+                    <div class="software-name">SORA E-Library</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=SORA" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://www.google.com" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">SORA E-Library</div>
+            </div>
+            
+            <div class="software-item" data-name="SWANK Streaming">
+                <a href="https://digitalcampus.swankmp.net/acvsd387686" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps" alt="SWANK Streaming"/>
+                    </div>
+                    <div class="software-name">SWANK Streaming</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=SWANK" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/512" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">SWANK Streaming</div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
