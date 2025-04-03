@@ -182,7 +182,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.htm
             <div class="software-description">{name}</div>
         </div>
                     """
-                    if name in ["Realtime", "Smartpass", "Classwize (acvsd.nj.us)", "Freshservice"]:
+                    if name in ["Realtime", "Smartpass", "Classwize (acvsd.nj.us)", "Freshservice", "acitech.org"]:
                         common_items.append(item_html)
                     elif name in ["Classroom", "Drive", "Gemini", "Gmail"]:
                         google_workspace_items.append(item_html)
