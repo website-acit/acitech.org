@@ -188,7 +188,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.htm
             html += "\n".join(google_workspace_items)
             html += """
         </div>
-        <h2 class="section-title">Quick Links</h2>
+        <h2 class="section-title">Other Links</h2>
         <div class="software-grid" id="software-grid">
 """
             html += "\n".join(other_items)
