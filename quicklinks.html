@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +12,14 @@
             'FILL' 0,
             'wght' 400,
             'GRAD' 0,
-            'opsz' 20 /* Reduced opsz */
+            'opsz' 20
         }
 
         body {
             font-family: sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
         }
 
         .container {
@@ -49,15 +50,15 @@
 
         .software-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Reduced minmax */
-            gap: 10px; /* Reduced gap */
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
         }
 
         .software-item {
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px; /* Reduced padding */
+            padding: 10px;
             text-align: center;
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
@@ -68,12 +69,12 @@
         }
 
         .software-item:hover {
-            transform: translateY(-5px); /* Reduced hover effect */
+            transform: translateY(-5px);
         }
 
         .software-icon {
-            font-size: 3em; /* Reduced font size */
-            margin-bottom: 5px; /* Reduced margin */
+            font-size: 3em;
+            margin-bottom: 5px;
             color: #555;
             line-height: 1;
         }
@@ -81,13 +82,13 @@
         .software-name {
             font-weight: bold;
             color: #333;
-            margin-bottom: 8px; /* Reduced margin */
+            margin-bottom: 8px;
             line-height: 1.2;
         }
 
         .software-help-container {
             display: flex;
-            gap: 8px; /* Reduced gap */
+            gap: 8px;
         }
 
         .software-help-link {
@@ -95,7 +96,7 @@
             color: #888;
             display: inline-block;
             line-height: 1;
-            margin-top: 5px; /* Reduced margin */
+            margin-top: 5px;
             transition: color 0.2s ease-in-out;
         }
 
@@ -127,15 +128,34 @@
 <body>
     <div class="container">
         <div class="software-grid" id="software-grid">
+
+            <div class="software-item" data-name="Acitech.org">
+                <a href="https://acitech.org" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://img.icons8.com/ios-filled/50/FA5252/osprey.png" alt="Acitech.org"/>
+                    </div>
+                    <div class="software-name">Acitech.org</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="https://servicedesk.acitech.org/support/catalog/items/84" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Acitech.org</div>
+            </div>
+            
             <div class="software-item" data-name="Realtime">
                 <a href="https://secure.realtimesis.com/acitech" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="https://img.icons8.com/office/40/clock--v1.png" alt="clock--v1"/>
+                        <img width="40" height="40" src="https://img.icons8.com/office/40/clock--v1.png" alt="Realtime"/>
                     </div>
                     <div class="software-name">Realtime</div>
                 </a>
                 <div class="software-help-container">
-                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Realtime&aurora_search=true" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                    <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions?term=Realtime" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
                         <span class="material-symbols-outlined">description</span>
                     </a>
                     <a href="https://servicedesk.acitech.org/support/catalog/items/502" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
@@ -144,10 +164,11 @@
                 </div>
                 <div class="software-description">Realtime</div>
             </div>
+            
             <div class="software-item" data-name="Gmail">
                 <a href="https://mail.google.com/" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/>
+                        <img width="40" height="40" src="https://img.icons8.com/color/48/gmail-new.png" alt="Gmail"/>
                     </div>
                     <div class="software-name">Gmail</div>
                 </a>
@@ -161,10 +182,11 @@
                 </div>
                 <div class="software-description">Gmail</div>
             </div>
+            
             <div class="software-item" data-name="Classroom">
                 <a href="https://classroom.google.com/" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="https://img.icons8.com/fluency/48/google-classroom.png" alt="google-classroom"/>
+                        <img width="40" height="40" src="https://img.icons8.com/fluency/48/google-classroom.png" alt="Classroom"/>
                     </div>
                     <div class="software-name">Classroom</div>
                 </a>
@@ -178,10 +200,11 @@
                 </div>
                 <div class="software-description">Classroom</div>
             </div>
+            
             <div class="software-item" data-name="Drive">
                 <a href="https://drive.google.com/drive/my-drive" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="https://img.icons8.com/color/48/google-drive--v2.png" alt="google-drive--v2"/>
+                        <img width="40" height="40" src="https://img.icons8.com/color/48/google-drive--v2.png" alt="Drive"/>
                     </div>
                     <div class="software-name">Drive</div>
                 </a>
@@ -195,10 +218,11 @@
                 </div>
                 <div class="software-description">Drive</div>
             </div>
+            
             <div class="software-item" data-name="Smartpass">
                 <a href="https://clever.com/oauth/instant-login?client_id=f4260ade643c042482a3&district_id=57054477dde74301000000fd" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="https://img.icons8.com/pulsar-gradient/48/enter-2.png" alt="enter-2"/>
+                        <img width="40" height="40" src="https://img.icons8.com/pulsar-gradient/48/enter-2.png" alt="Smartpass"/>
                     </div>
                     <div class="software-name">Smartpass</div>
                 </a>
@@ -212,10 +236,11 @@
                 </div>
                 <div class="software-description">Smartpass</div>
             </div>
+            
             <div class="software-item" data-name="Classwize">
                 <a href="https://classroom.us-1.familyzone.io/login/mGpiyKZIAt" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="https://img.icons8.com/pulsar-gradient/48/my-computer.png" alt="my-computer"/>
+                        <img width="40" height="40" src="https://img.icons8.com/pulsar-gradient/48/my-computer.png" alt="Classwize"/>
                     </div>
                     <div class="software-name">Classwize</div>
                 </a>
@@ -229,10 +254,11 @@
                 </div>
                 <div class="software-description">Classwize</div>
             </div>
+            
             <div class="software-item" data-name="ACITeach">
                 <a href="https://drive.google.com/drive/folders/1gpXF6c1Knenw9GkPlhdues496soElWHH?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="https://img.icons8.com/fluency/48/email-open.png" alt="email-open"/>
+                        <img width="40" height="40" src="https://img.icons8.com/fluency/48/email-open.png" alt="ACITeach"/>
                     </div>
                     <div class="software-name">ACITeach</div>
                 </a>
@@ -246,10 +272,11 @@
                 </div>
                 <div class="software-description">ACITeach</div>
             </div>
+            
             <div class="software-item" data-name="Atlas">
                 <a href="https://acitech.rubiconatlas.org/" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
-                        <img width="40" height="40" src="https://img.icons8.com/external-outline-andi-nur-abdillah/64/FD7E14/external-book-online-learning-outline-outline-andi-nur-abdillah-7.png" alt="external-book-online-learning-outline-outline-andi-nur-abdillah-7"/>
+                        <img width="40" height="40" src="https://img.icons8.com/external-outline-andi-nur-abdillah/64/FD7E14/external-book-online-learning-outline-outline-andi-nur-abdillah-7.png" alt="Atlas"/>
                     </div>
                     <div class="software-name">Atlas</div>
                 </a>
@@ -263,6 +290,25 @@
                 </div>
                 <div class="software-description">Atlas</div>
             </div>
+            
+            <div class="software-item" data-name="Freshservice">
+                <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/login" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="software-icon">
+                        <img width="40" height="40" src="https://img.icons8.com/ios-filled/50/lightning-bolt--v1.png" alt="Freshservice"/>
+                    </div>
+                    <div class="software-name">Freshservice</div>
+                </a>
+                <div class="software-help-container">
+                    <a href="" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+                    <a href="" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Get Help">
+                        <span class="material-symbols-outlined">support_agent</span>
+                    </a>
+                </div>
+                <div class="software-description">Freshservice</div>
+            </div>
+            
         </div>
     </div>
 </body>
