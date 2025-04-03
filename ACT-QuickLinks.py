@@ -2,7 +2,7 @@ import csv
 
 def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.html"):
     """
-    Generates an HTML page with quick links from a CSV file.
+    Generates an HTML page with quick links from a CSV file, with a Google Workspace for Education section.
 
     Args:
         csv_file_path (str): The path to the CSV file.
@@ -139,18 +139,29 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.htm
         #help-link span {
             margin-right: 5px;
         }
+
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="software-grid" id="software-grid">
+        <h2 class="section-title">Google Workspace for Education</h2>
+        <div class="software-grid" id="google-workspace-grid">
 """
+
+            google_workspace_items = []
+            other_items = []
 
             for row in reader:
                 name, link, icon_url, knowledge_base_link, help_link = row
 
                 if name and link and icon_url:
-                    html += f"""
+                    item_html = f"""
             <div class="software-item" data-name="{name}">
                 <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
                     <div class="software-icon">
@@ -168,8 +179,19 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-QuickLinks.htm
                 </div>
                 <div class="software-description">{name}</div>
             </div>
-            """
+                    """
+                    if name in ["Classroom", "Drive", "Gmail", "Gemini"]:
+                        google_workspace_items.append(item_html)
+                    else:
+                        other_items.append(item_html)
 
+            html += "\n".join(google_workspace_items)
+            html += """
+        </div>
+        <h2 class="section-title">Quick Links</h2>
+        <div class="software-grid" id="software-grid">
+"""
+            html += "\n".join(other_items)
             html += """
         </div>
     </div>
