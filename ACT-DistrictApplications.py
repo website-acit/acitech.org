@@ -199,6 +199,23 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
             html += """
         </div>
     </div>
+        <script>
+        const searchInput = document.getElementById('search-input');
+        const softwareItems = document.querySelectorAll('.software-item');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            softwareItems.forEach(item => {
+                const softwareName = item.dataset.name.toLowerCase();
+                if (softwareName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 """
