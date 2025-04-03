@@ -38,18 +38,18 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
             background-color: #ffffff;
         }
 
-         header {
+        header {
             background-color: #79282a;
             padding: 10px 20px;
             color: white;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* Left justify header content */
             align-items: center;
             height: 60px; /* Explicitly set the header height */
             flex-wrap: wrap; /* Allow wrapping on small screens */
         }
 
-                @media (max-width: 600px) { /* Adjust breakpoint as needed */
+        @media (max-width: 600px) { /* Adjust breakpoint as needed */
             header {
                 height: auto; /* Allow header to expand */
                 align-items: flex-start; /* Align items to top on wrap */
@@ -170,6 +170,11 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
     </style>
 </head>
 <body>
+    <header>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search Applications...">
+        </div>
+    </header>
     <div class="container">
         <div class="software-grid" id="software-grid">
 """
@@ -199,7 +204,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
             html += """
         </div>
     </div>
-        <script>
+    <script>
         const searchInput = document.getElementById('search-input');
         const softwareItems = document.querySelectorAll('.software-item');
 
