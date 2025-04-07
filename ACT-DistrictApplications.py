@@ -1,4 +1,5 @@
 import csv
+import random
 
 def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplications.html"):
     """
@@ -119,7 +120,6 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
         .software-icon {
             font-size: 3em;
             margin-bottom: 5px;
-            color: #555;
             line-height: 1;
         }
 
@@ -183,10 +183,11 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
                 name, link, knowledge_base_link, help_link = row
 
                 if name and link:
+                    random_color = f"#{random.randint(0, 255):02x}{random.randint(0, 255):02x}{random.randint(0, 255):02x}"
                     html += f"""
             <div class="software-item" data-name="{name}">
                 <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
-                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">Apps</span>
+                    <span class="software-icon icon-atlas material-symbols-outlined" style="color: {random_color};">Apps</span>
                     <div class="software-name">{name}</div>
                 </a>
                 <div class="software-help-container">
