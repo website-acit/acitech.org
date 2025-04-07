@@ -1,0 +1,4 @@
+name,link,iconName
+Freshdesk Facilities Portal,https://servicedesk.acitech.org/support/tickets/new,bolt
+ACIT HVAC Controller,https://10.13.0.15/prelogin,manufacturing
+ACSSSD HVAC Controller,https://10.14.0.15/prelogin,manufacturing
