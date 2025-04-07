@@ -168,7 +168,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-Facilities.htm
         </div>
         """
                     
-        html += """"
+        html += """
         </div>
     </div>
 </body>
