@@ -166,15 +166,19 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-Facilities.htm
             </a>
             <div class="software-description">{name}</div>
         </div>
+        """
+                    
+        html += """"
+        </div>
     </div>
 </body>
 </html>
 """
 
-            with open(output_html_path, 'w', encoding='utf-8') as html_file:
+        with open(output_html_path, 'w', encoding='utf-8') as html_file:
                 html_file.write(html)
 
-            print(f"HTML file '{output_html_path}' created successfully.")
+        print(f"HTML file '{output_html_path}' created successfully.")
 
     except FileNotFoundError:
         print(f"Error: CSV file '{csv_file_path}' not found.")
