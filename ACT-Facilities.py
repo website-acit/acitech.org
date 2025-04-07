@@ -151,21 +151,20 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-Facilities.htm
 </head>
 <body>
     <div class="container">
-        <div class="software-grid" id="cameras-grid">
+        <div class="software-grid" id="software-grid">
 """
 
             for row in reader:
                 name,link,iconName = row
 
                 if name and link and iconName:
-                    item_html = f"""
+                    html += f"""
         <div class="software-item" data-name="{name}">
             <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
                 <span class="software-icon icon-atlas material-symbols-outlined">{iconName}</span>
                 <div class="software-name">{name}</div>
             </a>
             <div class="software-description">{name}</div>
-        </div>
         </div>
     </div>
 </body>
