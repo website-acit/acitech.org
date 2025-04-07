@@ -171,7 +171,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-Security.html"
             <div class="software-description">{name}</div>
         </div>
                     """
-                    if name in ["Xprotect Web", "Unifi NVR 04", "MC Camera Locations", "SW Camera Locations"]:
+                    if name in ["Xprotect Web", "MC Camera Locations", "SW Camera Locations"]:
                         cameras.append(item_html)
                     else:
                         visitor_management.append(item_html)
