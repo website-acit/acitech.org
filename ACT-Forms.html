@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACIT Forms</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 20
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        header {
+            background-color: #79282a;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px; /* Explicitly set the header height */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+        @media (max-width: 600px) { /* Adjust breakpoint as needed */
+            header {
+                height: auto; /* Allow header to expand */
+                align-items: flex-start; /* Align items to top on wrap */
+            }
+            #search-container, .header-links {
+                width: 100%; /* Take full width on small screens */
+            }
+            #search-container {
+                margin-bottom: 10px;
+            }
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .icon-color {
+            color: #79282a
+        }
+
+        #search-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+        }
+
+        .software-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .software-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .software-icon {
+            font-size: 3em;
+            margin-bottom: 5px;
+            color: #555;
+            line-height: 1;
+        }
+
+        .software-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .software-help-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .software-help-link {
+            text-decoration: none;
+            color: #888;
+            display: inline-block;
+            line-height: 1;
+            margin-top: 5px;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .software-help-link .material-symbols-outlined {
+            font-size: 1.5em;
+            vertical-align: middle;
+        }
+
+        .software-help-link:hover {
+            color: #79282a;
+        }
+
+        .software-description {
+            display: none;
+        }
+
+        #help-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #help-link span {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search Forms...">
+        </div>
+        <div class="header-links">
+            <div class="software-help-container">
+                <a id="help-link" href="https://servicedesk.acitech.org/support/tickets/new" target="_blank" rel="noopener noreferrer">
+                    <span class="material-symbols-outlined">support_agent</span> Get Help
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="software-grid" id="software-grid">
+
+            <div class="software-item" data-name="General Forms (A-Z)">
+                <a href="https://drive.google.com/drive/folders/0By0G_8LbJZr-Z0lYRXpNb0dqRjQ?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">General Forms (A-Z)</div>
+                </a>
+                <div class="software-description">General Forms (A-Z)</div>
+            </div>
+            
+            <div class="software-item" data-name="Obligation Submission Form">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxkDccHe6Gu98FXdBKCJXWJJ9i08n1rFelBWInsVd47OTmBA/viewform?c=0&w=1" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">Obligation Submission Form</div>
+                </a>
+                <div class="software-description">Obligation Submission Form</div>
+            </div>
+            
+            <div class="software-item" data-name="Grade Update Form for Academic and CTE Areas">
+                <a href="https://sites.google.com/acitech.org/ers/grade-change-request" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">Grade Update Form for Academic and CTE Areas</div>
+                </a>
+                <div class="software-description">Grade Update Form for Academic and CTE Areas</div>
+            </div>
+            
+            <div class="software-item" data-name="Discipline Referral Form (Make a copy to enter info)">
+                <a href="https://docs.google.com/document/d/1P6QML16YTfB8K56PEAzbUvy-3LcPrTdp_GEacVm93vI/edit?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">Discipline Referral Form (Make a copy to enter info)</div>
+                </a>
+                <div class="software-description">Discipline Referral Form (Make a copy to enter info)</div>
+            </div>
+            
+            <div class="software-item" data-name="Positive Recognition Form (Paper)">
+                <a href="https://docs.google.com/document/d/1dPSRubBLB6WTyowz3ZZW5_KPqGvkH6PbLQBjaMHRkD0/edit?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">Positive Recognition Form (Paper)</div>
+                </a>
+                <div class="software-description">Positive Recognition Form (Paper)</div>
+            </div>
+            
+            <div class="software-item" data-name="Positive Recognition Form (Google Form)">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSffj3psKkPmIzRALDmIicjgeLjk3jlsMRNffNERchhPqhXieQ/viewform" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">Positive Recognition Form (Google Form)</div>
+                </a>
+                <div class="software-description">Positive Recognition Form (Google Form)</div>
+            </div>
+            
+            <div class="software-item" data-name="Translation Request Form 24-25">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8RM6vqJK2pdsh42rnXrOVhRjbKW_aylKR_jzrkZzeJumtEw/viewform?vc=0&c=0&w=1&flr=0" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">Translation Request Form 24-25</div>
+                </a>
+                <div class="software-description">Translation Request Form 24-25</div>
+            </div>
+            
+            <div class="software-item" data-name="Teacher Order Supply Form">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScZTMLoHvL6badyKWUhnCeNzHn3VCEe5pEIzK6MNn-R59RCJw/viewform" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">Teacher Order Supply Form</div>
+                </a>
+                <div class="software-description">Teacher Order Supply Form</div>
+            </div>
+            
+            <div class="software-item" data-name="I & RS Resources">
+                <a href="https://drive.google.com/drive/folders/10K9Rgk0j6COOqq6bljGVaPNAO0FrOMbi?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
+                    <span class="software-icon icon-atlas icon-color material-symbols-outlined">format_list_bulleted</span>
+                    <div class="software-name">I & RS Resources</div>
+                </a>
+                <div class="software-description">I & RS Resources</div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const softwareItems = document.querySelectorAll('.software-item');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            softwareItems.forEach(item => {
+                const softwareName = item.dataset.name.toLowerCase();
+                if (softwareName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
