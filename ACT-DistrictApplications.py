@@ -75,10 +75,6 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-DistrictApplic
             color: #333;
         }
 
-        .icon-color {
-            color: #79282a
-        }
-
         #search-container {
             display: flex;
             align-items: center;
