@@ -159,14 +159,14 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             dashboards = []
 
             for row in reader:
-                name,link,iconURL = row
+                name,link,iconURL,color = row
 
-                if name and link and iconURL:
+                if name and link and iconURL and color:
                     item_html = f"""
         <div class="software-item" data-name="{name}">
             <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="software-icon">
-                    <img width="40" height="40" src="{iconURL}" alt="{name}"/>
+                    <img width="40" height="40" style="color: {color};" src="{iconURL}" alt="{name}"/>
                 </div>
                 <div class="software-name">{name}</div>
             </a>
@@ -175,7 +175,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
                     """
                     if name in ["Salto", "Rise Vision", "Newline", "Promethean"]:
                         management.append(item_html)
-                    elif name in ["KB and SR Form", "KB and SR Sheet"]:
+                    elif name in ["KB and SR Form", "KB and SR Sheet", "Notifications Form", "Notifications Sheet", "Alerts and Outages Form", "Alerts and Outages Sheet"]:
                         notifications.append(item_html)
                     else:
                         dashboards.append(item_html)
