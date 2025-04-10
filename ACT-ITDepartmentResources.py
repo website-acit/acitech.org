@@ -39,6 +39,30 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             background-color: #ffffff;
         }
 
+           header {
+            background-color: #79282a;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: flex-start; /* Left justify header content */
+            align-items: center;
+            height: 60px; /* Explicitly set the header height */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+        @media (max-width: 600px) { /* Adjust breakpoint as needed */
+            header {
+                height: auto; /* Allow header to expand */
+                align-items: flex-start; /* Align items to top on wrap */
+            }
+            #search-container, .header-links {
+                width: 100%; /* Take full width on small screens */
+            }
+            #search-container {
+                margin-bottom: 10px;
+            }
+        }
+
         .container {
             max-width: 960px;
             margin: 20px auto;
@@ -149,6 +173,11 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
     </style>
 </head>
 <body>
+    <header>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search Applications...">
+        </div>
+    </header>
     <div class="container">
         <h2 class="section-title">Management</h2>
         <div class="software-grid" id="management-grid">
@@ -159,9 +188,9 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             dashboards = []
 
             for row in reader:
-                name,link,iconURL = row
+                name,link,iconURL,knowledge_base_link = row
 
-                if name and link and iconURL:
+                if name and link and iconURL and knowledge_base_link:
                     item_html = f"""
         <div class="software-item" data-name="{name}">
             <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
@@ -170,6 +199,11 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
                 </div>
                 <div class="software-name">{name}</div>
             </a>
+            <div class="software-help-container">
+                    <a href="{knowledge_base_link}" class="software-help-link" target="_blank" rel="noopener noreferrer" title="Knowledge Base">
+                        <span class="material-symbols-outlined">description</span>
+                    </a>
+            </div>
             <div class="software-description">{name}</div>
         </div>
                     """
@@ -196,6 +230,23 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             html += """
         </div>
     </div>
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const softwareItems = document.querySelectorAll('.software-item');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            softwareItems.forEach(item => {
+                const softwareName = item.dataset.name.toLowerCase();
+                if (softwareName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 """

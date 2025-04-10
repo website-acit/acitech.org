@@ -1,19 +1,19 @@
-name,link,iconURL
-Google Admin,https://admin.google.com/,https://img.icons8.com/color/48/google-logo.png
-Google Apps Script,https://script.google.com/home,https://img.icons8.com/color/48/google-podcasts.png
-Salto,http://act-salto-01:8100/index.html#!/home,https://img.icons8.com/fluency/48/employee-card.png
-Rise Vision,https://apps.risevision.com/editor/list?cid=0ecb8c9a-3cd0-409e-8924-af462e645379,https://img.icons8.com/external-gliphyline-royyan-wijaya/32/40C057/external-basic-geometricalist-glyph-gliphyline-royyan-wijaya-23.png
-Newline,https://newline.glbth.com/#/login,https://img.icons8.com/ios/50/tv.png
-Promethean,https://user-management.prometheanworld.com/,https://img.icons8.com/ios/50/tv.png
-KB and SR Form,https://script.google.com/a/macros/acitech.org/s/AKfycbz0MDCccUIHNOOYtsnAlb8CaXEDrwcffCl21kDa-MVv_CmuhIICY4qsQD5JRMLxxfr-uA/exec,https://img.icons8.com/ios-filled/50/40C057/error--v1.png
-KB and SR Sheet,https://docs.google.com/spreadsheets/d/1x13dTAyhNRMkDKkiLtLx_70OK9j1P4qNXFzcfv-4_Qg/edit?gid=1009127265#gid=1009127265,https://img.icons8.com/ios-filled/50/40C057/error--v1.png
-Notifications Form,https://script.google.com/a/macros/acitech.org/s/AKfycbztNpX2iaFo7qiWkFWyjS7WEHiY4mteIX5AOmWcAlgG7QNO6LgvZDfMr8krtzbLcIiqwg/exec,https://img.icons8.com/color/48/error--v1.png
-Notifications Sheet,https://docs.google.com/spreadsheets/d/1BLqrAv73CScp4NWYMY4UU03EkyEzzlvifdPu947ZurU/edit?gid=0#gid=0,https://img.icons8.com/color/48/error--v1.png
-Alerts and Outages Form,https://script.google.com/a/macros/acitech.org/s/AKfycbxbGmH3FZo2E_Iuecq8xtHKO5cxK5V_koA3yDrBTv0AZPtrCwIppQ9gIQT3aNis2RrH/exec,https://img.icons8.com/ios-filled/50/FA5252/error--v1.png
-Alerts and Outages Sheet,https://docs.google.com/spreadsheets/d/1ESL2D3DbCtlZ3Enl4yL17i5Wwfxill-HDuR968uJhSA/edit?gid=0#gid=0,https://img.icons8.com/ios-filled/50/FA5252/error--v1.png
-CBW Relays,https://monitoring.acitech.org/d/aebddqorxdczkd/cbw-relays,https://img.icons8.com/fluency/48/grafana.png
-Core Interface,https://monitoring.acitech.org/d/Fi96pMWGk/core-interface-1-1-2,https://img.icons8.com/fluency/48/grafana.png
-HTTP Prober,https://monitoring.acitech.org/d/NEzutrbMk/http-prober,https://img.icons8.com/fluency/48/grafana.png
-Network Speed Monitor,https://monitoring.acitech.org/d/dkTtVQank/network-speed-monitor,https://img.icons8.com/fluency/48/grafana.png
-Ruckus Switches,https://monitoring.acitech.org/d/debd9ea9nfqpsc/ruckus-switches,https://img.icons8.com/fluency/48/grafana.png
-Salto Gateways,https://monitoring.acitech.org/d/fcb1bdc8-fa9d-4bfd-b725-003b174473ad/salto-gateways,https://img.icons8.com/fluency/48/grafana.png
+name,link,iconURL,knowledge_base_link
+Google Admin,https://admin.google.com/,https://img.icons8.com/color/48/google-logo.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Google Apps Script,https://script.google.com/home,https://img.icons8.com/color/48/google-podcasts.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Salto,http://act-salto-01:8100/index.html#!/home,https://img.icons8.com/fluency/48/employee-card.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Rise Vision,https://apps.risevision.com/editor/list?cid=0ecb8c9a-3cd0-409e-8924-af462e645379,https://img.icons8.com/external-gliphyline-royyan-wijaya/32/40C057/external-basic-geometricalist-glyph-gliphyline-royyan-wijaya-23.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Newline,https://newline.glbth.com/#/login,https://img.icons8.com/ios/50/tv.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Promethean,https://user-management.prometheanworld.com/,https://img.icons8.com/ios/50/tv.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+KB and SR Form,https://script.google.com/a/macros/acitech.org/s/AKfycbz0MDCccUIHNOOYtsnAlb8CaXEDrwcffCl21kDa-MVv_CmuhIICY4qsQD5JRMLxxfr-uA/exec,https://img.icons8.com/ios-filled/50/40C057/error--v1.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+KB and SR Sheet,https://docs.google.com/spreadsheets/d/1x13dTAyhNRMkDKkiLtLx_70OK9j1P4qNXFzcfv-4_Qg/edit?gid=1009127265#gid=1009127265,https://img.icons8.com/ios-filled/50/40C057/error--v1.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Notifications Form,https://script.google.com/a/macros/acitech.org/s/AKfycbztNpX2iaFo7qiWkFWyjS7WEHiY4mteIX5AOmWcAlgG7QNO6LgvZDfMr8krtzbLcIiqwg/exec,https://img.icons8.com/ios-filled/50/FAB005/error--v1.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Notifications Sheet,https://docs.google.com/spreadsheets/d/1BLqrAv73CScp4NWYMY4UU03EkyEzzlvifdPu947ZurU/edit?gid=0#gid=0,https://img.icons8.com/ios-filled/50/FAB005/error--v1.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Alerts and Outages Form,https://script.google.com/a/macros/acitech.org/s/AKfycbxbGmH3FZo2E_Iuecq8xtHKO5cxK5V_koA3yDrBTv0AZPtrCwIppQ9gIQT3aNis2RrH/exec,https://img.icons8.com/ios-filled/50/FA5252/error--v1.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Alerts and Outages Sheet,https://docs.google.com/spreadsheets/d/1ESL2D3DbCtlZ3Enl4yL17i5Wwfxill-HDuR968uJhSA/edit?gid=0#gid=0,https://img.icons8.com/ios-filled/50/FA5252/error--v1.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+CBW Relays,https://monitoring.acitech.org/d/aebddqorxdczkd/cbw-relays,https://img.icons8.com/fluency/48/grafana.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Core Interface,https://monitoring.acitech.org/d/Fi96pMWGk/core-interface-1-1-2,https://img.icons8.com/fluency/48/grafana.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+HTTP Prober,https://monitoring.acitech.org/d/NEzutrbMk/http-prober,https://img.icons8.com/fluency/48/grafana.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Network Speed Monitor,https://monitoring.acitech.org/d/dkTtVQank/network-speed-monitor,https://img.icons8.com/fluency/48/grafana.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Ruckus Switches,https://monitoring.acitech.org/d/debd9ea9nfqpsc/ruckus-switches,https://img.icons8.com/fluency/48/grafana.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
+Salto Gateways,https://monitoring.acitech.org/d/fcb1bdc8-fa9d-4bfd-b725-003b174473ad/salto-gateways,https://img.icons8.com/fluency/48/grafana.png,https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/search/solutions
