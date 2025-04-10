@@ -150,12 +150,13 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
 </head>
 <body>
     <div class="container">
-        <h2 class="section-title">Displays</h2>
-        <div class="software-grid" id="displays-grid">
+        <h2 class="section-title">Management</h2>
+        <div class="software-grid" id="management-grid">
 """
 
-            displays = []
-            updates = []
+            management = []
+            notifications = []
+            dashboards = []
 
             for row in reader:
                 name,link,iconURL = row
@@ -172,18 +173,26 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             <div class="software-description">{name}</div>
         </div>
                     """
-                    if name in ["Rise Vision", "Newline"]:
-                        displays.append(item_html)
+                    if name in ["Salto", "Rise Vision", "Newline", "Promethean"]:
+                        management.append(item_html)
+                    elif name in ["KB and SR Form", "KB and SR Sheet"]:
+                        notifications.append(item_html)
                     else:
-                        updates.append(item_html)
+                        dashboards.append(item_html)
 
-            html += "\n".join(displays)
+            html += "\n".join(management)
             html += """
         </div>
-        <h2 class="section-title">Updates</h2>
-        <div class="software-grid" id="updates-grid">
+        <h2 class="section-title">Notifications</h2>
+        <div class="software-grid" id="notifications-grid">
 """
-            html += "\n".join(updates)
+            html += "\n".join(notifications)
+            html += """
+        </div>
+        <h2 class="section-title">Dashboards</h2>
+        <div class="software-grid" id="dashboards-grid">
+"""
+            html += "\n".join(dashboards)
             html += """
         </div>
     </div>
