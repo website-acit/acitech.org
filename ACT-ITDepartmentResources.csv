@@ -1,19 +1,19 @@
 name,link,iconURL,color
-Google Admin,https://admin.google.com/,https://img.icons8.com/color/48/google-logo.png,none
-Google Apps Scipt,https://script.google.com/home,https://img.icons8.com/color/48/google-podcasts.png,none
-Salto,http://act-salto-01:8100/index.html#!/home,https://img.icons8.com/fluency/48/employee-card.png,none
-Rise Vision,https://apps.risevision.com/editor/list?cid=0ecb8c9a-3cd0-409e-8924-af462e645379,https://img.icons8.com/external-gliphyline-royyan-wijaya/32/40C057/external-basic-geometricalist-glyph-gliphyline-royyan-wijaya-23.png,none
-Newline,https://newline.glbth.com/#/login,https://img.icons8.com/ios/50/tv.png,none
-Promethean,https://user-management.prometheanworld.com/,https://img.icons8.com/ios/50/tv.png,none
-KB and SR Form,https://script.google.com/a/macros/acitech.org/s/AKfycbz0MDCccUIHNOOYtsnAlb8CaXEDrwcffCl21kDa-MVv_CmuhIICY4qsQD5JRMLxxfr-uA/exec,https://img.icons8.com/ios/50/google-forms.png,#199406
-KB and SR Sheet,https://docs.google.com/spreadsheets/d/1x13dTAyhNRMkDKkiLtLx_70OK9j1P4qNXFzcfv-4_Qg/edit?gid=1009127265#gid=1009127265,https://img.icons8.com/ios/50/google-sheets.png,#199406
-Notifications Form,https://script.google.com/a/macros/acitech.org/s/AKfycbztNpX2iaFo7qiWkFWyjS7WEHiY4mteIX5AOmWcAlgG7QNO6LgvZDfMr8krtzbLcIiqwg/exec,https://img.icons8.com/ios/50/google-forms.png,#f0e007
-Notifications Sheet,https://docs.google.com/spreadsheets/d/1BLqrAv73CScp4NWYMY4UU03EkyEzzlvifdPu947ZurU/edit?gid=0#gid=0,https://img.icons8.com/ios/50/google-sheets.png,#f0e007
-Alerts and Outages Form,https://script.google.com/a/macros/acitech.org/s/AKfycbxbGmH3FZo2E_Iuecq8xtHKO5cxK5V_koA3yDrBTv0AZPtrCwIppQ9gIQT3aNis2RrH/exec,https://img.icons8.com/ios/50/google-forms.png,#f00707
-Alerts and Outages Sheet,https://docs.google.com/spreadsheets/d/1ESL2D3DbCtlZ3Enl4yL17i5Wwfxill-HDuR968uJhSA/edit?gid=0#gid=0,https://img.icons8.com/ios/50/google-sheets.png,#f00707
-CBW Relays,https://monitoring.acitech.org/d/aebddqorxdczkd/cbw-relays,https://img.icons8.com/fluency/48/grafana.png,none
-Core Interface,https://monitoring.acitech.org/d/Fi96pMWGk/core-interface-1-1-2,https://img.icons8.com/fluency/48/grafana.png,none
-HTTP Prober,https://monitoring.acitech.org/d/NEzutrbMk/http-prober,https://img.icons8.com/fluency/48/grafana.png,none
-Network Speed Monitor,https://monitoring.acitech.org/d/dkTtVQank/network-speed-monitor,https://img.icons8.com/fluency/48/grafana.png,none
-Ruckus Switches,https://monitoring.acitech.org/d/debd9ea9nfqpsc/ruckus-switches,https://img.icons8.com/fluency/48/grafana.png,none
-Salto Gateways,https://monitoring.acitech.org/d/fcb1bdc8-fa9d-4bfd-b725-003b174473ad/salto-gateways,https://img.icons8.com/fluency/48/grafana.png,none
+Google Admin,https://admin.google.com/,https://img.icons8.com/color/48/google-logo.png,color: none
+Google Apps Scipt,https://script.google.com/home,https://img.icons8.com/color/48/google-podcasts.png,color: none
+Salto,http://act-salto-01:8100/index.html#!/home,https://img.icons8.com/fluency/48/employee-card.png,color: none
+Rise Vision,https://apps.risevision.com/editor/list?cid=0ecb8c9a-3cd0-409e-8924-af462e645379,https://img.icons8.com/external-gliphyline-royyan-wijaya/32/40C057/external-basic-geometricalist-glyph-gliphyline-royyan-wijaya-23.png,color: none
+Newline,https://newline.glbth.com/#/login,https://img.icons8.com/ios/50/tv.png,color: none
+Promethean,https://user-management.prometheanworld.com/,https://img.icons8.com/ios/50/tv.png,color: none
+KB and SR Form,https://script.google.com/a/macros/acitech.org/s/AKfycbz0MDCccUIHNOOYtsnAlb8CaXEDrwcffCl21kDa-MVv_CmuhIICY4qsQD5JRMLxxfr-uA/exec,https://img.icons8.com/ios/50/google-forms.png,filter: sepia(100%) saturate(500%) hue-rotate(315deg)
+KB and SR Sheet,https://docs.google.com/spreadsheets/d/1x13dTAyhNRMkDKkiLtLx_70OK9j1P4qNXFzcfv-4_Qg/edit?gid=1009127265#gid=1009127265,https://img.icons8.com/ios/50/google-sheets.png,color: none
+Notifications Form,https://script.google.com/a/macros/acitech.org/s/AKfycbztNpX2iaFo7qiWkFWyjS7WEHiY4mteIX5AOmWcAlgG7QNO6LgvZDfMr8krtzbLcIiqwg/exec,https://img.icons8.com/ios/50/google-forms.png,color: none
+Notifications Sheet,https://docs.google.com/spreadsheets/d/1BLqrAv73CScp4NWYMY4UU03EkyEzzlvifdPu947ZurU/edit?gid=0#gid=0,https://img.icons8.com/ios/50/google-sheets.png,color: none
+Alerts and Outages Form,https://script.google.com/a/macros/acitech.org/s/AKfycbxbGmH3FZo2E_Iuecq8xtHKO5cxK5V_koA3yDrBTv0AZPtrCwIppQ9gIQT3aNis2RrH/exec,https://img.icons8.com/ios/50/google-forms.png,color: none
+Alerts and Outages Sheet,https://docs.google.com/spreadsheets/d/1ESL2D3DbCtlZ3Enl4yL17i5Wwfxill-HDuR968uJhSA/edit?gid=0#gid=0,https://img.icons8.com/ios/50/google-sheets.png,color: none
+CBW Relays,https://monitoring.acitech.org/d/aebddqorxdczkd/cbw-relays,https://img.icons8.com/fluency/48/grafana.png,color: none
+Core Interface,https://monitoring.acitech.org/d/Fi96pMWGk/core-interface-1-1-2,https://img.icons8.com/fluency/48/grafana.png,color: none
+HTTP Prober,https://monitoring.acitech.org/d/NEzutrbMk/http-prober,https://img.icons8.com/fluency/48/grafana.png,color: none
+Network Speed Monitor,https://monitoring.acitech.org/d/dkTtVQank/network-speed-monitor,https://img.icons8.com/fluency/48/grafana.png,color: none
+Ruckus Switches,https://monitoring.acitech.org/d/debd9ea9nfqpsc/ruckus-switches,https://img.icons8.com/fluency/48/grafana.png,color: none
+Salto Gateways,https://monitoring.acitech.org/d/fcb1bdc8-fa9d-4bfd-b725-003b174473ad/salto-gateways,https://img.icons8.com/fluency/48/grafana.png,color: none

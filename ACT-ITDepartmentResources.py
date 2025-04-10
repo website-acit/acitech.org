@@ -166,14 +166,14 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
         <div class="software-item" data-name="{name}">
             <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="software-icon">
-                    <img width="40" height="40" style="color: {color};" src="{iconURL}" alt="{name}"/>
+                    <img width="40" height="40" style="{color};" src="{iconURL}" alt="{name}"/>
                 </div>
                 <div class="software-name">{name}</div>
             </a>
             <div class="software-description">{name}</div>
         </div>
                     """
-                    if name in ["Salto", "Rise Vision", "Newline", "Promethean"]:
+                    if name in ["Google Admin", "Google Apps Script", "Salto", "Rise Vision", "Newline", "Promethean"]:
                         management.append(item_html)
                     elif name in ["KB and SR Form", "KB and SR Sheet", "Notifications Form", "Notifications Sheet", "Alerts and Outages Form", "Alerts and Outages Sheet"]:
                         notifications.append(item_html)
