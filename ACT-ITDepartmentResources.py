@@ -159,14 +159,14 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             dashboards = []
 
             for row in reader:
-                name,link,iconURL,color = row
+                name,link,iconURL = row
 
-                if name and link and iconURL and color:
+                if name and link and iconURL:
                     item_html = f"""
         <div class="software-item" data-name="{name}">
             <a href="{link}" target="_blank" style="text-decoration: none; color: inherit;">
                 <div class="software-icon">
-                    <img width="40" height="40" style="{color};" src="{iconURL}" alt="{name}"/>
+                    <img width="40" height="40" src="{iconURL}" alt="{name}"/>
                 </div>
                 <div class="software-name">{name}</div>
             </a>
