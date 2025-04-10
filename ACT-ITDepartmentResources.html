@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACIT IT Department Resources</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 20
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #search-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+        }
+
+        .software-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .software-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .software-icon {
+            font-size: 3em;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .software-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .software-help-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .software-help-link {
+            text-decoration: none;
+            color: #888;
+            display: inline-block;
+            line-height: 1;
+            margin-top: 5px;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .software-help-link .material-symbols-outlined {
+            font-size: 1.5em;
+            vertical-align: middle;
+        }
+
+        .software-help-link:hover {
+            color: #79282a;
+        }
+
+        .software-description {
+            display: none;
+        }
+
+        #help-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #help-link span {
+            margin-right: 5px;
+        }
+
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="section-title">Displays</h2>
+        <div class="software-grid" id="displays-grid">
+
+        <div class="software-item" data-name="Rise Vision">
+            <a href="https://apps.risevision.com/editor/list?cid=0ecb8c9a-3cd0-409e-8924-af462e645379" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="software-icon">
+                    <img width="40" height="40" src="https://img.icons8.com/external-gliphyline-royyan-wijaya/32/40C057/external-basic-geometricalist-glyph-gliphyline-royyan-wijaya-23.png" alt="Rise Vision"/>
+                </div>
+                <div class="software-name">Rise Vision</div>
+            </a>
+            <div class="software-description">Rise Vision</div>
+        </div>
+                    
+
+        <div class="software-item" data-name="Newline">
+            <a href="https://newline.glbth.com/#/login" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="software-icon">
+                    <img width="40" height="40" src="https://img.icons8.com/ios/50/tv.png" alt="Newline"/>
+                </div>
+                <div class="software-name">Newline</div>
+            </a>
+            <div class="software-description">Newline</div>
+        </div>
+                    
+        </div>
+        <h2 class="section-title">Updates</h2>
+        <div class="software-grid" id="updates-grid">
+
+        <div class="software-item" data-name="ServiceDesk Updates">
+            <a href="https://docs.google.com/spreadsheets/d/159nF5P36FkOB99ZUG6oLpkvu2N9jzkkD2RmCqKk1QXU/edit?usp=sharing" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="software-icon">
+                    <img width="40" height="40" src="https://img.icons8.com/ios/50/new-post--v1.png" alt="ServiceDesk Updates"/>
+                </div>
+                <div class="software-name">ServiceDesk Updates</div>
+            </a>
+            <div class="software-description">ServiceDesk Updates</div>
+        </div>
+                    
+        </div>
+    </div>
+</body>
+</html>
