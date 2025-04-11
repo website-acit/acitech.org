@@ -232,10 +232,10 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             html += "\n".join(dashboards)
             html += """
         </div>
-        <h1 class="section-title">Reports</h1>
+        <p class="section-title">Reports</p>
         <div class="software-grid" id="reports-grid">
 """
-            html += "\n".join(notifications)
+            html += "\n".join(reports)
             html += """
         </div>        
     </div>
