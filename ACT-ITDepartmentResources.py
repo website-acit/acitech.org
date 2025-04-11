@@ -186,6 +186,8 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             management = []
             notifications = []
             dashboards = []
+            snmp = []
+            ping = []
             reports = []
 
             for row in reader:
@@ -214,6 +216,10 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
                         notifications.append(item_html)
                     elif name in []:
                         dashboards.append(item_html)
+                    elif name in ["Core Interface", "Network Speed Monitor"]:
+                        snmp.append(item_html)    
+                    elif name in ["CBW Relays", "HTTP Prober", "Ruckus Switches", "Salto Gateways"]:
+                        ping.append(item_html)
                     else:
                         reports.append(item_html)
 
@@ -232,6 +238,18 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             html += "\n".join(dashboards)
             html += """
         </div>
+        <p class="section-title">SNMP</p>
+        <div class="software-grid" id="snmp-grid">
+"""
+            html += "\n".join(snmp)
+            html += """
+        </div> 
+        <p class="section-title">Ping</p>
+        <div class="software-grid" id="ping-grid">
+"""
+            html += "\n".join(ping)
+            html += """
+        </div>   
         <p class="section-title">Reports</p>
         <div class="software-grid" id="reports-grid">
 """
