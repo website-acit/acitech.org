@@ -175,7 +175,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
 <body>
     <header>
         <div id="search-container">
-            <input type="text" id="search-input" placeholder="Search Applications...">
+            <input type="text" id="search-input" placeholder="Search Resources...">
         </div>
     </header>
     <div class="container">
@@ -186,6 +186,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             management = []
             notifications = []
             dashboards = []
+            reports = []
 
             for row in reader:
                 name,link,iconURL,knowledge_base_link = row
@@ -211,8 +212,10 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
                         management.append(item_html)
                     elif name in ["KB and SR Form", "KB and SR Sheet", "Notifications Form", "Notifications Sheet", "Alerts and Outages Form", "Alerts and Outages Sheet"]:
                         notifications.append(item_html)
-                    else:
+                    elif name in []:
                         dashboards.append(item_html)
+                    else:
+                        reports.append(item_html)
 
             html += "\n".join(management)
             html += """
@@ -229,6 +232,12 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             html += "\n".join(dashboards)
             html += """
         </div>
+        <h1 class="section-title">Reports</h1>
+        <div class="software-grid" id="reports-grid">
+"""
+            html += "\n".join(notifications)
+            html += """
+        </div>        
     </div>
     <script>
         const searchInput = document.getElementById('search-input');
