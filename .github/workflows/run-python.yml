@@ -1,7 +1,7 @@
 # .github/workflows/run-python.yml
 
 # Name of the workflow (shows up in the Actions tab)
-name: Run Python Script
+name: Run ITDepartmentResources.py
 
 # Controls when the workflow will run
 on:
@@ -33,3 +33,20 @@ jobs:
     # Step 4: Run the Python script
     - name: Run Python script
       run: python ACT-ITDepartmentResources.py # Replace with the correct path to your script
+
+    - name: Configure Git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Stage HTML file
+      run: |
+        git add ACT-ITDepartmentResources.html # <-- Ensure filename is correct!
+
+    - name: Commit HTML file
+      run: |
+        git diff --staged --quiet || git commit -m "Automated update: Regenerate HTML resources file"
+
+    - name: Push changes
+      run: |
+        git push origin main
