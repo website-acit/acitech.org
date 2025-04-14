@@ -15,22 +15,52 @@
             font-family: sans-serif; /* Optional font */
         }
         .container {
-            text-align: center; /* Centers text within the container */
-            padding: 20px; /* Optional padding around the text */
+            display: flex; /* Enable flexbox for the container */
+            align-items: center; /* Vertically align items in the container */
+            padding: 20px; /* Optional padding around the content */
             background-color: #fff; /* Optional background for the container */
             border-radius: 8px; /* Optional rounded corners */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+            width: 80%; /* Adjust as needed */
+            max-width: 900px; /* Optional maximum width */
+        }
+        .text-content {
+            flex: 1; /* Allows the text content to take up available space */
+            text-align: left; /* Align text to the left */
+            padding-right: 20px; /* Add some space between text and image */
+        }
+        .image-container {
+            flex-shrink: 0; /* Prevent the image from shrinking */
+        }
+        .image-container img {
+            display: block; /* Prevent extra space below the image */
+            max-width: 100%; /* Ensure image doesn't exceed container width */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .button-link {
+            display: inline-block; /* Make it behave like inline text but with block properties */
+            padding: 10px 20px; /* Add padding around the text */
+            background-color: red; /* Set the background color to red */
+            color: white; /* Set the text color to white */
+            text-decoration: none; /* Remove the default underline for links */
+            border-radius: 5px; /* Add rounded corners */
+            font-weight: bold; /* Make the text bold */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img width="400" height="400" src="https://3.files.edl.io/4387/25/04/14/172657-387e6440-5746-49ef-b882-a5c77e7690a5.png" alt="Service Desk"/>
-        <h1>Isn't this hawk-ful!</h1>
-        <p>You don't have to ruffle your feathers! <a href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/543">Click here to submit a Knowledge Base Article</a> and we will add it to our Library.
-        </p>
-        <br>
-        <p>Thank You, Service Desk Team</p>
+        <div class="text-content">
+            <h1>Isn't this hawk-ful!</h1>
+            <p>You don't have to ruffle your feathers! Click below to submit a Knowledge Base Article and we will add it to our Library.</p>
+            <br>
+            <a class="button-link" href="https://atlanticcountyinstituteofthelpdesk.freshservice.com/support/catalog/items/543">Click here</a>
+            <br>
+            <p>Thank You, Service Desk Team</p>
+        </div>
+        <div class="image-container">
+            <img width="400" height="400" src="https://3.files.edl.io/4387/25/04/14/172657-387e6440-5746-49ef-b882-a5c77e7690a5.png" alt="Service Desk"/>
+        </div>
     </div>
 </body>
 </html>
