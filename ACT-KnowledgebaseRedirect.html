@@ -31,6 +31,7 @@
         }
         .image-container {
             flex-shrink: 0; /* Prevent the image from shrinking */
+            margin-left: 20px; /* Add some space between image and text */
         }
         .image-container img {
             display: block; /* Prevent extra space below the image */
@@ -45,6 +46,31 @@
             text-decoration: none; /* Remove the default underline for links */
             border-radius: 5px; /* Add rounded corners */
             font-weight: bold; /* Make the text bold */
+        }
+
+        /* Media query for smaller screens (e.g., mobile devices) */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                align-items: center; /* Center items horizontally when stacked */
+            }
+            .text-content {
+                width: 100%; /* Make text take full width */
+                padding-right: 0; /* Remove right padding */
+                text-align: center; /* Center text on smaller screens */
+                margin-bottom: 20px; /* Add space below text */
+            }
+            .image-container {
+                width: 80%; /* Adjust image width for smaller screens */
+                margin-left: 0; /* Remove left margin */
+                margin-bottom: 20px; /* Add space below image if it's above text */
+                /* If you want the image below the text by default on mobile, remove the margin-bottom above
+                   and add margin-top: 20px; here instead. */
+            }
+            .image-container img {
+                max-width: 100%; /* Ensure image fits within the container */
+                height: auto;
+            }
         }
     </style>
 </head>
