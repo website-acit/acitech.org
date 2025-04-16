@@ -3,53 +3,98 @@ const startButton = document.getElementById('startButton');
 const resultDiv = document.getElementById('result');
 const instructionsPara = document.getElementById('instructions');
 
-// Check for Web Speech API support
-if ('webkitSpeechRecognition' in window) {
-    // Create a new Speech Recognition object
-    const recognition = new webkitSpeechRecognition(); // For Chrome-based browsers
-    recognition.continuous = true; // Keep listening even when the user pauses
-    recognition.interimResults = true; // Provide interim results for a smoother experience
+// Global variables
+let recognition;
+let finalTranscript = '';
+let silenceTimeout;
+let isListening = false;
 
-    // Event Listeners
-    startButton.addEventListener('click', startRecognition);
+// Function to start speech recognition
+function startRecognition() {
+    if (isListening) return; // Prevent multiple instances
 
-    recognition.onstart = function() {
-        instructionsPara.textContent = "Listening...";
-    };
+    resultDiv.innerHTML = '';
+    instructionsPara.textContent = 'Listening...';
+    finalTranscript = ''; // Reset transcript
+    isListening = true;
 
-    recognition.onspeechend = function() {
-        instructionsPara.textContent = "Stopped listening.";
-        recognition.stop();
-    };
+    recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US'; // You can change the language here
 
-    recognition.onerror = function(event) {
-        instructionsPara.textContent = 'Error: ' + event.error;
-    };
-
-    recognition.onresult = function(event) {
-        let finalTranscript = '';
+    // Reset silence timer on any speech
+    recognition.onresult = (event) => {
+        resetSilenceTimer();
         let interimTranscript = '';
-
         for (let i = event.resultIndex; i < event.results.length; ++i) {
             if (event.results[i].isFinal) {
-                finalTranscript += event.results[i][0].transcript;
+                finalTranscript += event.results[i][0].transcript + ' ';
             } else {
                 interimTranscript += event.results[i][0].transcript;
             }
         }
-
         resultDiv.innerHTML = finalTranscript + '<span style="color:#ddd;">' + interimTranscript + '</span>';
     };
 
-    // Function to start speech recognition
-    function startRecognition() {
-        resultDiv.innerHTML = '';
-        instructionsPara.textContent = '';
-        recognition.start();
+    recognition.onstart = () => {
+        instructionsPara.textContent = 'Listening...';
+        resetSilenceTimer(); // Start the timer when recognition starts
+    };
+
+    recognition.onspeechend = () => {
+        instructionsPara.textContent = 'Stopped listening.';
+        // Do NOT stop recognition here, the timer will handle it
+    };
+
+    recognition.onerror = (event) => {
+        instructionsPara.textContent = 'Error: ' + event.error;
+        stopRecognition();
+    };
+
+    recognition.start();
+}
+
+// Function to stop speech recognition
+function stopRecognition() {
+    if (recognition) {
+        recognition.stop();
+        recognition = null;
+    }
+    isListening = false;
+    clearTimeout(silenceTimeout); // Clear any pending timeout
+}
+
+// Function to create and download the text file
+function downloadTranscript() {
+    if (!finalTranscript.trim()) {
+        instructionsPara.textContent = "No transcript to download.";
+        return;
     }
 
-} else {
-    // Speech Recognition not supported
-    instructionsPara.textContent = 'Web Speech API is not supported in this browser.';
-    startButton.disabled = true;
+    const blob = new Blob([finalTranscript], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'transcript.txt';
+    document.body.appendChild(a); // Append, trigger, and remove
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url); // Clean up
+    instructionsPara.textContent = "Transcript downloaded.";
 }
+// Function to reset the silence timer
+function resetSilenceTimer() {
+    clearTimeout(silenceTimeout); // Clear any existing timer
+    silenceTimeout = setTimeout(handleSilence, 30000); // 30 seconds (30000 ms)
+}
+
+// Function to handle silence
+function handleSilence() {
+    stopRecognition(); // Stop recognition
+    instructionsPara.textContent = 'Silence detected. Processing transcript...';
+    downloadTranscript(); // Create and download file
+}
+
+// Event Listeners
+startButton.addEventListener('click', startRecognition);
