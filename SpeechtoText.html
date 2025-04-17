@@ -16,8 +16,13 @@
         }
 
         h1 {
-            color: #2c3e50;
+            /* Remove the text-based title */
             margin-bottom: 20px;
+        }
+
+        h1 img {
+            /* Style for the image logo */
+            height: 50px; /* Adjust the height as needed */
         }
 
         .controls {
@@ -89,7 +94,7 @@
     </style>
 </head>
 <body>
-    <h1>Chronoscribe</h1>
+    <h1><img src="ChronoScribe.png" alt="Chronoscribe Logo"></h1>
     <div class="controls">
         <button id="startButton">Start Listening</button>
         <button id="stopButton" disabled>Stop Listening</button>
