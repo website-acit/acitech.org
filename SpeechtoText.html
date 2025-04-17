@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronoscribe - Speech to Text with Visual Cues</title>
+    <title>Chronoscribe - Speech to Text with Background Cue</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f8;
+            background-color: #f4f4f8; /* Default background */
             color: #333;
             margin: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            transition: background-color 0.3s ease-in-out; /* For background color change */
+        }
+
+        body.transcribing-bg {
+            background-color: #e0f7fa; /* Light blue or another subtle color */
         }
 
         h1 {
@@ -24,11 +29,6 @@
 
         h1 img {
             height: 100px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        h1 img.transcribing-logo {
-            transform: scale(1.1);
         }
 
         .controls {
@@ -124,7 +124,7 @@
         const transcriptDisplay = document.getElementById('transcript-display');
         const instructionsPara = document.getElementById('instructions');
         const dateDisplay = document.getElementById('date-display');
-        const logo = document.querySelector('h1 img');
+        const bodyElement = document.body;
         const transcriptContainer = document.getElementById('live-transcript-container');
 
         // Global variables
@@ -147,7 +147,7 @@
             return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
         }
 
-        // Function to get the current date in<ctrl3348>-MM-DD format for comparison
+        // Function to get the current date in<\ctrl3348>-MM-DD format for comparison
         function getCurrentDateYYYYMMDD() {
             const now = new Date();
             const year = now.getFullYear();
@@ -179,10 +179,10 @@
         }
 
         function indicateTranscribing() {
-            logo.classList.add('transcribing-logo');
+            bodyElement.classList.add('transcribing-bg');
             transcriptContainer.classList.add('transcribing-border');
             setTimeout(() => {
-                logo.classList.remove('transcribing-logo');
+                bodyElement.classList.remove('transcribing-bg');
                 transcriptContainer.classList.remove('transcribing-border');
             }, 300); // Adjust duration as needed
         }
@@ -283,7 +283,7 @@
             }
             isListening = false;
             clearTimeout(silenceTimeout);
-            logo.classList.remove('transcribing-logo'); // Ensure no lingering animation
+            bodyElement.classList.remove('transcribing-bg'); // Ensure no lingering background color
             transcriptContainer.classList.remove('transcribing-border'); // Ensure no lingering border
 
             startButton.disabled = false;
