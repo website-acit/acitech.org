@@ -79,6 +79,13 @@
             font-size: 0.9em;
             margin-right: 10px;
         }
+
+        #date-display {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -89,6 +96,7 @@
     </div>
     <p id="instructions">Press 'Start Listening' to begin.</p>
     <div id="live-transcript-container">
+        <div id="date-display"></div>
         <div id="live-transcript-title">Live Transcript with Timestamps</div>
         <div id="transcript-display"></div>
     </div>
@@ -99,22 +107,31 @@
         const stopButton = document.getElementById('stopButton');
         const transcriptDisplay = document.getElementById('transcript-display');
         const instructionsPara = document.getElementById('instructions');
+        const dateDisplay = document.getElementById('date-display');
 
         // Global variables
         let recognition;
         let isListening = false;
 
-        // Function to get the current timestamp in a readable format
-function getCurrentTimestamp() {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
-}
+        // Function to get the current timestamp in 12-hour format
+        function getCurrentTimestamp() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        // Function to get the current date in a readable format
+        function getCurrentDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return now.toLocaleDateString(undefined, options);
+        }
+
         // Function to add a transcript entry with a timestamp to the display
         function addTranscriptEntry(transcript) {
             const timestamp = getCurrentTimestamp();
@@ -130,6 +147,7 @@ function getCurrentTimestamp() {
             if (isListening) return; // Prevent multiple instances
 
             transcriptDisplay.innerHTML = ''; // Clear previous transcript
+            dateDisplay.textContent = getCurrentDate(); // Display the date
             instructionsPara.textContent = 'Listening for PA System...';
             isListening = true;
 
@@ -188,6 +206,9 @@ function getCurrentTimestamp() {
         // Event Listeners
         startButton.addEventListener('click', startRecognition);
         stopButton.addEventListener('click', stopRecognition);
+
+        // Display the initial date when the page loads
+        dateDisplay.textContent = getCurrentDate();
     </script>
 </body>
 </html>
