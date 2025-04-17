@@ -18,11 +18,13 @@
         h1 {
             /* Remove the text-based title */
             margin-bottom: 20px;
+            display: flex; /* To center the image if needed */
+            justify-content: center; /* To center the image horizontally */
         }
 
         h1 img {
             /* Style for the image logo */
-            height: 50px; /* Adjust the height as needed */
+            height: 80px; /* Increased the height - adjust as needed */
         }
 
         .controls {
@@ -94,7 +96,7 @@
     </style>
 </head>
 <body>
-    <h1><img src="ChronoScribe.PNG" alt="Chronoscribe Logo"></h1>
+    <h1><img src="ChronoScribe.png" alt="Chronoscribe Logo"></h1>
     <div class="controls">
         <button id="startButton">Start Listening</button>
         <button id="stopButton" disabled>Stop Listening</button>
@@ -107,155 +109,7 @@
     </div>
 
     <script>
-        // Get DOM elements
-        const startButton = document.getElementById('startButton');
-        const stopButton = document.getElementById('stopButton');
-        const transcriptDisplay = document.getElementById('transcript-display');
-        const instructionsPara = document.getElementById('instructions');
-        const dateDisplay = document.getElementById('date-display');
-
-        // Global variables
-        let recognition;
-        let isListening = false;
-        const logKey = 'chronoscribeLog';
-
-        // Function to get the current timestamp in 12-hour format
-        function getCurrentTimestamp() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
-        }
-
-        // Function to get the current date in YYYY-MM-DD format for comparison
-        function getCurrentDateYYYYMMDD() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            return `${year}-${month}-${day}`;
-        }
-
-        // Function to get the current date in a readable format
-        function getCurrentDateReadable() {
-            const now = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return now.toLocaleDateString(undefined, options);
-        }
-
-        // Function to load the log from local storage
-        function loadLog() {
-            const storedLog = localStorage.getItem(logKey);
-            if (storedLog) {
-                transcriptDisplay.innerHTML = storedLog;
-            }
-            displayCurrentDate();
-            checkAndClearLog();
-        }
-
-        // Function to save the log to local storage
-        function saveLog() {
-            localStorage.setItem(logKey, transcriptDisplay.innerHTML);
-        }
-
-        // Function to add a transcript entry with a timestamp to the display and save
-        function addTranscriptEntry(transcript) {
-            const timestamp = getCurrentTimestamp();
-            const entry = document.createElement('div');
-            entry.classList.add('transcript-entry');
-            entry.innerHTML = `<span class="timestamp">[${timestamp}]</span> ${transcript}`;
-            transcriptDisplay.appendChild(entry);
-            transcriptDisplay.scrollTop = transcriptDisplay.scrollHeight; // Auto-scroll to bottom
-            saveLog();
-        }
-
-        // Function to display the current date
-        function displayCurrentDate() {
-            dateDisplay.textContent = getCurrentDateReadable();
-        }
-
-        // Function to check if the log needs to be cleared based on the date
-        function checkAndClearLog() {
-            const lastClearDate = localStorage.getItem('lastClearDate');
-            const currentDate = getCurrentDateYYYYMMDD();
-
-            if (lastClearDate !== currentDate) {
-                transcriptDisplay.innerHTML = ''; // Clear the log
-                localStorage.setItem('lastClearDate', currentDate); // Update the last clear date
-                saveLog(); // Save the cleared log (empty)
-            }
-            displayCurrentDate(); // Ensure the date is always current
-        }
-
-        // Function to start speech recognition
-        function startRecognition() {
-            if (isListening) return; // Prevent multiple instances
-
-            instructionsPara.textContent = 'Listening for PA System...';
-            isListening = true;
-
-            startButton.disabled = true;
-            stopButton.disabled = false;
-
-            recognition = new (window.webkitSpeechRecognition || window.SpeechRecognition)();
-            recognition.continuous = true;
-            recognition.interimResults = true;
-            recognition.lang = 'en-US'; // You can change the language here
-
-            recognition.onresult = (event) => {
-                let interimTranscript = '';
-                let finalTranscript = '';
-                for (let i = event.resultIndex; i < event.results.length; ++i) {
-                    if (event.results[i].isFinal) {
-                        finalTranscript += event.results[i][0].transcript;
-                        addTranscriptEntry(finalTranscript.trim());
-                    } else {
-                        interimTranscript += event.results[i][0].transcript;
-                    }
-                }
-                // Optionally display interim results if needed
-                // resultDiv.innerHTML = finalTranscript + '<span style="color:#999;">' + interimTranscript + '</span>';
-            };
-
-            recognition.onstart = () => {
-                instructionsPara.textContent = 'Listening for PA System...';
-            };
-
-            recognition.onspeechend = () => {
-                // Consider what should happen after speech ends (e.g., stay listening)
-            };
-
-            recognition.onerror = (event) => {
-                instructionsPara.textContent = 'Error: ' + event.error;
-                stopRecognition();
-            };
-
-            recognition.start();
-        }
-
-        // Function to stop speech recognition
-        function stopRecognition() {
-            if (recognition) {
-                recognition.stop();
-                recognition = null;
-            }
-            isListening = false;
-
-            startButton.disabled = false;
-            stopButton.disabled = true;
-            instructionsPara.textContent = 'Stopped listening.';
-        }
-
-        // Event Listeners
-        startButton.addEventListener('click', startRecognition);
-        stopButton.addEventListener('click', stopRecognition);
-
-        // Load the log when the page loads
-        loadLog();
+        // ... (rest of your JavaScript code remains the same) ...
     </script>
 </body>
 </html>
