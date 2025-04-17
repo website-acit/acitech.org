@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Web Speech API Example</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Speech API Example</title>
+    <style>
+        body {
+            font-family: sans-serif; /* A clean, modern sans-serif font */
+            margin: 2em;
+            background-color: #f4f4f4; /* Light background */
+            color: #333;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: 500; /* Medium weight for a modern feel */
+            color: #007bff; /* A modern blue accent color */
+            margin-bottom: 1em;
+            text-align: center; /* Center the title */
+        }
+        button {
+            padding: 0.8em 1.5em;
+            font-size: 1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #instructions {
+            margin-top: 1em;
+            color: #777;
+            text-align: center;
+        }
+        #result {
+            margin-top: 2em;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+    </style>
 </head>
-
 <body>
+    <h1>Speech to Text</h1>
+    <button id="startButton">Start Listening</button>
+    <p id="instructions">Press the Start button</p>
+    <div id="result"></div>
 
-    <h1>Speech to Text</h1>
-
-    <button id="startButton">Start Listening</button>
-
-    <p id="instructions">Press the Start button</p>
-
-    <div id="result"></div>
-
-
-
-    <script src="SpeechtoText.js"></script>
-
+    <script src="SpeechtoText.js"></script>
 </body>
-
 </html>
