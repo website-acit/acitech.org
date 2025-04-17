@@ -199,7 +199,7 @@
         // Function to reset the silence timer
         function resetSilenceTimer() {
             clearTimeout(silenceTimeout); // Clear any existing timer
-            silenceTimeout = setTimeout(handleSilence, 30000); // 30 seconds (30000 ms)
+            silenceTimeout = setTimeout(handleSilence, 5000); // 30 seconds (30000 ms)
         }
 
         // Function to handle silence
