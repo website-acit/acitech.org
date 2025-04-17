@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronoscribe - Speech to Text with Timestamp</title>
+    <title>Chronoscribe - Speech to Text with Daily Log Clear</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -112,6 +112,7 @@
         // Global variables
         let recognition;
         let isListening = false;
+        const logKey = 'chronoscribeLog';
 
         // Function to get the current timestamp in 12-hour format
         function getCurrentTimestamp() {
@@ -125,14 +126,38 @@
             return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
         }
 
+        // Function to get the current date in YYYY-MM-DD format for comparison
+        function getCurrentDateYYYYMMDD() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
         // Function to get the current date in a readable format
-        function getCurrentDate() {
+        function getCurrentDateReadable() {
             const now = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return now.toLocaleDateString(undefined, options);
         }
 
-        // Function to add a transcript entry with a timestamp to the display
+        // Function to load the log from local storage
+        function loadLog() {
+            const storedLog = localStorage.getItem(logKey);
+            if (storedLog) {
+                transcriptDisplay.innerHTML = storedLog;
+            }
+            displayCurrentDate();
+            checkAndClearLog();
+        }
+
+        // Function to save the log to local storage
+        function saveLog() {
+            localStorage.setItem(logKey, transcriptDisplay.innerHTML);
+        }
+
+        // Function to add a transcript entry with a timestamp to the display and save
         function addTranscriptEntry(transcript) {
             const timestamp = getCurrentTimestamp();
             const entry = document.createElement('div');
@@ -140,14 +165,31 @@
             entry.innerHTML = `<span class="timestamp">[${timestamp}]</span> ${transcript}`;
             transcriptDisplay.appendChild(entry);
             transcriptDisplay.scrollTop = transcriptDisplay.scrollHeight; // Auto-scroll to bottom
+            saveLog();
+        }
+
+        // Function to display the current date
+        function displayCurrentDate() {
+            dateDisplay.textContent = getCurrentDateReadable();
+        }
+
+        // Function to check if the log needs to be cleared based on the date
+        function checkAndClearLog() {
+            const lastClearDate = localStorage.getItem('lastClearDate');
+            const currentDate = getCurrentDateYYYYMMDD();
+
+            if (lastClearDate !== currentDate) {
+                transcriptDisplay.innerHTML = ''; // Clear the log
+                localStorage.setItem('lastClearDate', currentDate); // Update the last clear date
+                saveLog(); // Save the cleared log (empty)
+            }
+            displayCurrentDate(); // Ensure the date is always current
         }
 
         // Function to start speech recognition
         function startRecognition() {
             if (isListening) return; // Prevent multiple instances
 
-            transcriptDisplay.innerHTML = ''; // Clear previous transcript
-            dateDisplay.textContent = getCurrentDate(); // Display the date
             instructionsPara.textContent = 'Listening for PA System...';
             isListening = true;
 
@@ -207,8 +249,8 @@
         startButton.addEventListener('click', startRecognition);
         stopButton.addEventListener('click', stopRecognition);
 
-        // Display the initial date when the page loads
-        dateDisplay.textContent = getCurrentDate();
+        // Load the log when the page loads
+        loadLog();
     </script>
 </body>
 </html>
