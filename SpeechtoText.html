@@ -3,17 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Speech API Example</title>
+    <title>Chronoscribe - Speech to Text</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f8;
+            color: #333;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #instructions {
+            color: #777;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        #result-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        #result {
+            white-space: pre-wrap; /* Preserve line breaks */
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        #result span {
+            color: #999; /* Style for interim text */
+        }
+
+        #downloadButton {
+            background-color: #2ecc71;
+        }
+
+        #downloadButton:hover {
+            background-color: #27ae60;
+        }
+    </style>
 </head>
 <body>
-    <h1>Speech to Text</h1>
-    <button id="startButton">Start Listening</button>
-    <p id="instructions">Press the Start button</p>
-    <div id="result"></div>
+    <h1>Chronoscribe</h1>
+    <div class="controls">
+        <button id="startButton">Start Listening</button>
+        <button id="stopButton" disabled>Stop Listening</button>
+        <button id="downloadButton" disabled>Save Transcript</button>
+    </div>
+    <p id="instructions">Press 'Start Listening' to begin.</p>
+    <div id="result-container">
+        <div id="result"></div>
+    </div>
 
     <script>
         // Get DOM elements
         const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const downloadButton = document.getElementById('downloadButton');
         const resultDiv = document.getElementById('result');
         const instructionsPara = document.getElementById('instructions');
 
@@ -28,11 +108,15 @@
             if (isListening) return; // Prevent multiple instances
 
             resultDiv.innerHTML = '';
-            instructionsPara.textContent = 'Listening...';
+            instructionsPara.textContent = 'Listening for PA System...';
             finalTranscript = ''; // Reset transcript
             isListening = true;
 
-            recognition = new webkitSpeechRecognition();
+            startButton.disabled = true;
+            stopButton.disabled = false;
+            downloadButton.disabled = true;
+
+            recognition = new (window.webkitSpeechRecognition || window.SpeechRecognition)();
             recognition.continuous = true;
             recognition.interimResults = true;
             recognition.lang = 'en-US'; // You can change the language here
@@ -48,17 +132,16 @@
                         interimTranscript += event.results[i][0].transcript;
                     }
                 }
-                resultDiv.innerHTML = finalTranscript + '<span style="color:#ddd;">' + interimTranscript + '</span>';
+                resultDiv.innerHTML = finalTranscript + '<span style="color:#999;">' + interimTranscript + '</span>';
             };
 
             recognition.onstart = () => {
-                instructionsPara.textContent = 'Listening...';
+                instructionsPara.textContent = 'Listening for PA System...';
                 resetSilenceTimer(); // Start the timer when recognition starts
             };
 
             recognition.onspeechend = () => {
-                instructionsPara.textContent = 'Stopped listening.';
-                // Do NOT stop recognition here, the timer will handle it
+                // Instructions will be updated by the silence timer or stop button
             };
 
             recognition.onerror = (event) => {
@@ -77,26 +160,42 @@
             }
             isListening = false;
             clearTimeout(silenceTimeout); // Clear any pending timeout
+
+            startButton.disabled = false;
+            stopButton.disabled = true;
+            downloadButton.disabled = finalTranscript.trim() !== '';
+            instructionsPara.textContent = 'Stopped listening.';
         }
 
-        // Function to create and download the text file
+        // Function to create and download the text file with timestamp
         function downloadTranscript() {
             if (!finalTranscript.trim()) {
-                instructionsPara.textContent = "No transcript to download.";
+                instructionsPara.textContent = "No transcript to save.";
                 return;
             }
+
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timestamp = `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
+            const filename = `transcript_${timestamp}.txt`;
 
             const blob = new Blob([finalTranscript], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'transcript.txt';
+            a.download = filename;
             document.body.appendChild(a); // Append, trigger, and remove
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url); // Clean up
-            instructionsPara.textContent = "Transcript downloaded.";
+            instructionsPara.textContent = `Transcript saved as ${filename}`;
         }
+
         // Function to reset the silence timer
         function resetSilenceTimer() {
             clearTimeout(silenceTimeout); // Clear any existing timer
@@ -106,12 +205,14 @@
         // Function to handle silence
         function handleSilence() {
             stopRecognition(); // Stop recognition
-            instructionsPara.textContent = 'Silence detected. Processing transcript...';
+            instructionsPara.textContent = 'Silence detected. Preparing to save transcript...';
             downloadTranscript(); // Create and download file
         }
 
         // Event Listeners
         startButton.addEventListener('click', startRecognition);
+        stopButton.addEventListener('click', stopRecognition);
+        downloadButton.addEventListener('click', downloadTranscript);
     </script>
 </body>
 </html>
