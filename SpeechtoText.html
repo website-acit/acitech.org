@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronoscribe - Speech to Text with Grouped Transcripts</title>
+    <title>Chronoscribe - Speech to Text with Background Cue</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f8;
+            background-color: #f4f4f8; /* Default background */
             color: #333;
             margin: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
-            transition: background-color 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out; /* For background color change */
         }
 
         body.transcribing-bg {
-            background-color: #e0f7fa;
+            background-color: #e0f7fa; /* Light blue or another subtle color */
         }
 
         h1 {
@@ -71,7 +71,7 @@
         }
 
         #live-transcript-container.transcribing-border {
-            border: 2px solid #00c853;
+            border: 2px solid #00c853; /* Highlight color */
         }
 
         #live-transcript-title {
@@ -86,15 +86,14 @@
             line-height: 1.5;
         }
 
-        .transcript-group {
-            margin-bottom: 15px;
+        .transcript-entry {
+            margin-bottom: 8px;
         }
 
         .timestamp {
             color: #999;
             font-size: 0.9em;
             margin-right: 10px;
-            display: block;
         }
 
         #date-display {
@@ -132,29 +131,23 @@
         let recognition;
         let isListening = false;
         const logKey = 'chronoscribeLog';
-        const silenceDetectionTime = 5000;
+        const silenceDetectionTime = 5000; // 5 seconds
         let silenceTimeout;
         let hasSpokenSinceSilence = false;
-        let currentMinute = '';
-        let transcriptGroup = null;
 
         // Function to get the current timestamp in 12-hour format
         function getCurrentTimestamp() {
             const now = new Date();
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
-            hours = hours ? hours : 12;
-            return `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
         }
 
-        function getCurrentMinute() {
-            const now = new Date();
-            return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
-        }
-
-        // Function to get the current date in YYYY-MM-DD format for comparison
+        // Function to get the current date in<\ctrl3348>-MM-DD format for comparison
         function getCurrentDateYYYYMMDD() {
             const now = new Date();
             const year = now.getFullYear();
@@ -191,26 +184,18 @@
             setTimeout(() => {
                 bodyElement.classList.remove('transcribing-bg');
                 transcriptContainer.classList.remove('transcribing-border');
-            }, 300);
+            }, 300); // Adjust duration as needed
         }
 
         // Function to add a transcript entry with a timestamp to the display and save
         function addTranscriptEntry(transcript) {
-            const minute = getCurrentMinute();
             const timestamp = getCurrentTimestamp();
-
-            if (minute !== currentMinute) {
-                currentMinute = minute;
-                if (transcriptGroup) {
-                    saveLog(); // Save the previous group
-                }
-                transcriptGroup = document.createElement('div');
-                transcriptGroup.classList.add('transcript-group');
-                transcriptGroup.innerHTML = `<span class="timestamp">${timestamp}</span>`;
-                transcriptDisplay.appendChild(transcriptGroup);
-            }
-            transcriptGroup.innerHTML += ` ${transcript}`;
-            transcriptDisplay.scrollTop = transcriptDisplay.scrollHeight;
+            const entry = document.createElement('div');
+            entry.classList.add('transcript-entry');
+            entry.innerHTML = `<span class="timestamp">[${timestamp}]</span> ${transcript}`;
+            transcriptDisplay.appendChild(entry);
+            transcriptDisplay.scrollTop = transcriptDisplay.scrollHeight; // Auto-scroll to bottom
+            saveLog();
         }
 
         // Function to display the current date
@@ -224,21 +209,23 @@
             const currentDate = getCurrentDateYYYYMMDD();
 
             if (lastClearDate !== currentDate) {
-                transcriptDisplay.innerHTML = '';
-                localStorage.setItem('lastClearDate', currentDate);
-                saveLog();
+                transcriptDisplay.innerHTML = ''; // Clear the log
+                localStorage.setItem('lastClearDate', currentDate); // Update the last clear date
+                saveLog(); // Save the cleared log (empty)
             }
-            displayCurrentDate();
+            displayCurrentDate(); // Ensure the date is always current
         }
 
         function resetSilenceTimer() {
             clearTimeout(silenceTimeout);
             silenceTimeout = setTimeout(() => {
                 if (!hasSpokenSinceSilence && isListening) {
+                    // You can choose to activate one or both indicators here if needed
+                    // indicateTranscribing();
                 }
-                hasSpokenSinceSilence = false;
+                hasSpokenSinceSilence = false; // Reset after silence detection
             }, silenceDetectionTime);
-            hasSpokenSinceSilence = true;
+            hasSpokenSinceSilence = true; // Voice was heard, reset the silence trigger
         }
 
         // Function to start speech recognition
@@ -247,16 +234,12 @@
 
             instructionsPara.textContent = 'Listening for PA System...';
             isListening = true;
-            hasSpokenSinceSilence = false;
-            currentMinute = getCurrentMinute();
-            transcriptGroup = document.createElement('div');
-            transcriptGroup.classList.add('transcript-group');
-            transcriptDisplay.appendChild(transcriptGroup);
+            hasSpokenSinceSilence = false; // Reset on start
 
             startButton.disabled = true;
             stopButton.disabled = false;
-            transcriptDisplay.innerHTML = '';
-            dateDisplay.textContent = getCurrentDateReadable();
+            transcriptDisplay.innerHTML = ''; // Clear previous transcript
+            dateDisplay.textContent = getCurrentDateReadable(); // Display the date
 
             recognition = new (window.webkitSpeechRecognition || window.SpeechRecognition)();
             recognition.continuous = true;
@@ -265,7 +248,7 @@
 
             recognition.onresult = (event) => {
                 resetSilenceTimer();
-                indicateTranscribing();
+                indicateTranscribing(); // Call this when voice is heard
                 let finalTranscript = '';
                 for (let i = event.resultIndex; i < event.results.length; ++i) {
                     if (event.results[i].isFinal) {
@@ -300,11 +283,9 @@
             }
             isListening = false;
             clearTimeout(silenceTimeout);
-            bodyElement.classList.remove('transcribing-bg');
-            transcriptContainer.classList.remove('transcribing-border');
-            if (transcriptGroup) {
-                saveLog();
-            }
+            bodyElement.classList.remove('transcribing-bg'); // Ensure no lingering background color
+            transcriptContainer.classList.remove('transcribing-border'); // Ensure no lingering border
+
             startButton.disabled = false;
             stopButton.disabled = true;
             instructionsPara.textContent = 'Stopped listening.';
