@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronoscribe - Speech to Text with Siri Glow</title>
+    <title>Chronoscribe - Speech to Text with Visual Cues</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,7 +13,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative; /* For absolute positioning of the glow */
+            position: relative;
         }
 
         h1 {
@@ -24,6 +24,11 @@
 
         h1 img {
             height: 100px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        h1 img.transcribing-logo {
+            transform: scale(1.1);
         }
 
         .controls {
@@ -62,6 +67,11 @@
             max-width: 600px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            transition: border 0.2s ease-in-out;
+        }
+
+        #live-transcript-container.transcribing-border {
+            border: 2px solid #00c853; /* Highlight color */
         }
 
         #live-transcript-title {
@@ -92,47 +102,6 @@
             margin-bottom: 10px;
             text-align: center;
         }
-
-        .siri-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Don't interfere with clicks */
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .siri-glow::before,
-        .siri-glow::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.6;
-        }
-
-        .siri-glow::before {
-            top: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: #007aff; /* Siri blue */
-            box-shadow: 0 0 20px #007aff;
-        }
-
-        .siri-glow::after {
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: #f44336; /* Siri red */
-            box-shadow: 0 0 15px #f44336;
-        }
-
-        .siri-glow.active {
-            opacity: 1;
-        }
     </style>
 </head>
 <body>
@@ -147,7 +116,6 @@
         <div id="live-transcript-title">Live Transcript with Timestamps</div>
         <div id="transcript-display"></div>
     </div>
-    <div id="siriGlow" class="siri-glow"></div>
 
     <script>
         // Get DOM elements
@@ -156,7 +124,8 @@
         const transcriptDisplay = document.getElementById('transcript-display');
         const instructionsPara = document.getElementById('instructions');
         const dateDisplay = document.getElementById('date-display');
-        const siriGlow = document.getElementById('siriGlow');
+        const logo = document.querySelector('h1 img');
+        const transcriptContainer = document.getElementById('live-transcript-container');
 
         // Global variables
         let recognition;
@@ -178,7 +147,7 @@
             return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
         }
 
-        // Function to get the current date in YYYY-MM-DD format for comparison
+        // Function to get the current date in<ctrl3348>-MM-DD format for comparison
         function getCurrentDateYYYYMMDD() {
             const now = new Date();
             const year = now.getFullYear();
@@ -207,6 +176,15 @@
         // Function to save the log to local storage
         function saveLog() {
             localStorage.setItem(logKey, transcriptDisplay.innerHTML);
+        }
+
+        function indicateTranscribing() {
+            logo.classList.add('transcribing-logo');
+            transcriptContainer.classList.add('transcribing-border');
+            setTimeout(() => {
+                logo.classList.remove('transcribing-logo');
+                transcriptContainer.classList.remove('transcribing-border');
+            }, 300); // Adjust duration as needed
         }
 
         // Function to add a transcript entry with a timestamp to the display and save
@@ -238,18 +216,12 @@
             displayCurrentDate(); // Ensure the date is always current
         }
 
-        function activateSiriGlow() {
-            siriGlow.classList.add('active');
-            setTimeout(() => {
-                siriGlow.classList.remove('active');
-            }, 1000); // Adjust duration as needed
-        }
-
         function resetSilenceTimer() {
             clearTimeout(silenceTimeout);
             silenceTimeout = setTimeout(() => {
                 if (!hasSpokenSinceSilence && isListening) {
-                    activateSiriGlow();
+                    // You can choose to activate one or both indicators here if needed
+                    // indicateTranscribing();
                 }
                 hasSpokenSinceSilence = false; // Reset after silence detection
             }, silenceDetectionTime);
@@ -276,6 +248,7 @@
 
             recognition.onresult = (event) => {
                 resetSilenceTimer();
+                indicateTranscribing(); // Call this when voice is heard
                 let finalTranscript = '';
                 for (let i = event.resultIndex; i < event.results.length; ++i) {
                     if (event.results[i].isFinal) {
@@ -310,6 +283,8 @@
             }
             isListening = false;
             clearTimeout(silenceTimeout);
+            logo.classList.remove('transcribing-logo'); // Ensure no lingering animation
+            transcriptContainer.classList.remove('transcribing-border'); // Ensure no lingering border
 
             startButton.disabled = false;
             stopButton.disabled = true;
