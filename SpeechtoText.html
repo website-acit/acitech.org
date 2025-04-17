@@ -3,53 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Speech API Example</title>
-    <style>
-        body {
-            font-family: sans-serif; /* A clean, modern sans-serif font */
-            margin: 2em;
-            background-color: #f4f4f4; /* Light background */
-            color: #333;
-        }
-        h1 {
-            font-size: 2.5em;
-            font-weight: 500; /* Medium weight for a modern feel */
-            color: #007bff; /* A modern blue accent color */
-            margin-bottom: 1em;
-            text-align: center; /* Center the title */
-        }
-        button {
-            padding: 0.8em 1.5em;
-            font-size: 1em;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #instructions {
-            margin-top: 1em;
-            color: #777;
-            text-align: center;
-        }
-        #result {
-            margin-top: 2em;
-            padding: 1em;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: white;
-        }
-    </style>
+    <title>Modern Speech to Text</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h1>Speech to Text</h1>
-    <button id="startButton">Start Listening</button>
-    <p id="instructions">Press the Start button</p>
-    <div id="result"></div>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-microphone"></i> Speech to Text</h1>
+            <p class="tagline">Effortlessly convert your voice to text.</p>
+        </header>
+
+        <main>
+            <div class="controls">
+                <button id="startButton" class="button primary"><i class="fas fa-record-vinyl"></i> Start Listening</button>
+                <button id="downloadButton" class="button secondary"><i class="fas fa-download"></i> Download Text</button>
+            </div>
+            <div id="instructions" class="instructions">Press "Start Listening" to begin.</div>
+            <div id="result" class="result-box"></div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Modern Speech to Text</p>
+        </footer>
+    </div>
 
     <script src="SpeechtoText.js"></script>
 </body>
