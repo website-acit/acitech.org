@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html>
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Web Speech API Example</title>
-
+    <title>Speech to Text</title>
+    <style>
+        #transcription {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            height: 150px;
+            overflow-y: scroll;
+        }
+        #pastTranscriptions {
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .transcription-item {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
-
 <body>
+    <h1>Speech to Text</h1>
+    <button id="startButton">Start Listening</button>
+    <div id="transcription"></div>
+    <h2>Past Transcriptions</h2>
+    <div id="pastTranscriptions"></div>
 
-    <h1>Speech to Text</h1>
-
-    <button id="startButton">Start Listening</button>
-
-    <p id="instructions">Press the Start button</p>
-
-    <div id="result"></div>
-
-
-
-    <script src="SpeechtoText.js"></script>
-
+    <script src="SpeechtoText.js"></script>
 </body>
-
 </html>
