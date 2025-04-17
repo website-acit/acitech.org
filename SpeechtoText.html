@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronoscribe - Speech to Text with Daily Log Clear</title>
+    <title>Chronoscribe - Speech to Text with Siri Glow</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,18 +13,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative; /* For absolute positioning of the glow */
         }
 
         h1 {
-            /* Remove the text-based title */
             margin-bottom: 20px;
-            display: flex; /* To center the image if needed */
-            justify-content: center; /* To center the image horizontally */
+            display: flex;
+            justify-content: center;
         }
 
         h1 img {
-            /* Style for the image logo */
-            height: 100px; /* Reduced height to half of 200px */
+            height: 100px;
         }
 
         .controls {
@@ -34,7 +33,7 @@
         }
 
         button {
-            background-color: #273a4e; /* Changed button background color */
+            background-color: #273a4e;
             color: white;
             border: none;
             padding: 12px 25px;
@@ -45,7 +44,7 @@
         }
 
         button:hover {
-            background-color: #1a2938; /* Darker shade for hover effect */
+            background-color: #1a2938;
         }
 
         #instructions {
@@ -93,6 +92,47 @@
             margin-bottom: 10px;
             text-align: center;
         }
+
+        .siri-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Don't interfere with clicks */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .siri-glow::before,
+        .siri-glow::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .siri-glow::before {
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #007aff; /* Siri blue */
+            box-shadow: 0 0 20px #007aff;
+        }
+
+        .siri-glow::after {
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #f44336; /* Siri red */
+            box-shadow: 0 0 15px #f44336;
+        }
+
+        .siri-glow.active {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -107,6 +147,7 @@
         <div id="live-transcript-title">Live Transcript with Timestamps</div>
         <div id="transcript-display"></div>
     </div>
+    <div id="siriGlow" class="siri-glow"></div>
 
     <script>
         // Get DOM elements
@@ -115,11 +156,15 @@
         const transcriptDisplay = document.getElementById('transcript-display');
         const instructionsPara = document.getElementById('instructions');
         const dateDisplay = document.getElementById('date-display');
+        const siriGlow = document.getElementById('siriGlow');
 
         // Global variables
         let recognition;
         let isListening = false;
         const logKey = 'chronoscribeLog';
+        const silenceDetectionTime = 5000; // 5 seconds
+        let silenceTimeout;
+        let hasSpokenSinceSilence = false;
 
         // Function to get the current timestamp in 12-hour format
         function getCurrentTimestamp() {
@@ -133,7 +178,7 @@
             return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
         }
 
-        // Function to get the current date in<ctrl3348>-MM-DD format for comparison
+        // Function to get the current date in YYYY-MM-DD format for comparison
         function getCurrentDateYYYYMMDD() {
             const now = new Date();
             const year = now.getFullYear();
@@ -193,42 +238,60 @@
             displayCurrentDate(); // Ensure the date is always current
         }
 
+        function activateSiriGlow() {
+            siriGlow.classList.add('active');
+            setTimeout(() => {
+                siriGlow.classList.remove('active');
+            }, 1000); // Adjust duration as needed
+        }
+
+        function resetSilenceTimer() {
+            clearTimeout(silenceTimeout);
+            silenceTimeout = setTimeout(() => {
+                if (!hasSpokenSinceSilence && isListening) {
+                    activateSiriGlow();
+                }
+                hasSpokenSinceSilence = false; // Reset after silence detection
+            }, silenceDetectionTime);
+            hasSpokenSinceSilence = true; // Voice was heard, reset the silence trigger
+        }
+
         // Function to start speech recognition
         function startRecognition() {
-            if (isListening) return; // Prevent multiple instances
+            if (isListening) return;
 
             instructionsPara.textContent = 'Listening for PA System...';
             isListening = true;
+            hasSpokenSinceSilence = false; // Reset on start
 
             startButton.disabled = true;
             stopButton.disabled = false;
+            transcriptDisplay.innerHTML = ''; // Clear previous transcript
+            dateDisplay.textContent = getCurrentDateReadable(); // Display the date
 
             recognition = new (window.webkitSpeechRecognition || window.SpeechRecognition)();
             recognition.continuous = true;
             recognition.interimResults = true;
-            recognition.lang = 'en-US'; // You can change the language here
+            recognition.lang = 'en-US';
 
             recognition.onresult = (event) => {
-                let interimTranscript = '';
+                resetSilenceTimer();
                 let finalTranscript = '';
                 for (let i = event.resultIndex; i < event.results.length; ++i) {
                     if (event.results[i].isFinal) {
                         finalTranscript += event.results[i][0].transcript;
                         addTranscriptEntry(finalTranscript.trim());
-                    } else {
-                        interimTranscript += event.results[i][0].transcript;
                     }
                 }
-                // Optionally display interim results if needed
-                // resultDiv.innerHTML = finalTranscript + '<span style="color:#999;">' + interimTranscript + '</span>';
             };
 
             recognition.onstart = () => {
                 instructionsPara.textContent = 'Listening for PA System...';
+                resetSilenceTimer();
             };
 
             recognition.onspeechend = () => {
-                // Consider what should happen after speech ends (e.g., stay listening)
+                // Consider what should happen after speech ends
             };
 
             recognition.onerror = (event) => {
@@ -246,6 +309,7 @@
                 recognition = null;
             }
             isListening = false;
+            clearTimeout(silenceTimeout);
 
             startButton.disabled = false;
             stopButton.disabled = true;
