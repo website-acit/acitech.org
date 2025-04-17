@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronoscribe - Speech to Text</title>
+    <title>Chronoscribe - Speech to Text with Timestamp</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -47,7 +47,7 @@
             font-style: italic;
         }
 
-        #result-container {
+        #live-transcript-container {
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -58,22 +58,26 @@
             margin-bottom: 20px;
         }
 
-        #result {
-            white-space: pre-wrap; /* Preserve line breaks */
-            font-size: 18px;
-            line-height: 1.6;
+        #live-transcript-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
         }
 
-        #result span {
-            color: #999; /* Style for interim text */
+        #transcript-display {
+            white-space: pre-wrap;
+            font-size: 16px;
+            line-height: 1.5;
         }
 
-        #downloadButton {
-            background-color: #2ecc71;
+        .transcript-entry {
+            margin-bottom: 8px;
         }
 
-        #downloadButton:hover {
-            background-color: #27ae60;
+        .timestamp {
+            color: #999;
+            font-size: 0.9em;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -82,66 +86,80 @@
     <div class="controls">
         <button id="startButton">Start Listening</button>
         <button id="stopButton" disabled>Stop Listening</button>
-        <button id="downloadButton" disabled>Save Transcript</button>
     </div>
     <p id="instructions">Press 'Start Listening' to begin.</p>
-    <div id="result-container">
-        <div id="result"></div>
+    <div id="live-transcript-container">
+        <div id="live-transcript-title">Live Transcript with Timestamps</div>
+        <div id="transcript-display"></div>
     </div>
 
     <script>
         // Get DOM elements
         const startButton = document.getElementById('startButton');
         const stopButton = document.getElementById('stopButton');
-        const downloadButton = document.getElementById('downloadButton');
-        const resultDiv = document.getElementById('result');
+        const transcriptDisplay = document.getElementById('transcript-display');
         const instructionsPara = document.getElementById('instructions');
 
         // Global variables
         let recognition;
-        let finalTranscript = '';
-        let silenceTimeout;
         let isListening = false;
+
+        // Function to get the current timestamp in a readable format
+        function getCurrentTimestamp() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            return `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Function to add a transcript entry with a timestamp to the display
+        function addTranscriptEntry(transcript) {
+            const timestamp = getCurrentTimestamp();
+            const entry = document.createElement('div');
+            entry.classList.add('transcript-entry');
+            entry.innerHTML = `<span class="timestamp">[${timestamp}]</span> ${transcript}`;
+            transcriptDisplay.appendChild(entry);
+            transcriptDisplay.scrollTop = transcriptDisplay.scrollHeight; // Auto-scroll to bottom
+        }
 
         // Function to start speech recognition
         function startRecognition() {
             if (isListening) return; // Prevent multiple instances
 
-            resultDiv.innerHTML = '';
+            transcriptDisplay.innerHTML = ''; // Clear previous transcript
             instructionsPara.textContent = 'Listening for PA System...';
-            finalTranscript = ''; // Reset transcript
             isListening = true;
 
             startButton.disabled = true;
             stopButton.disabled = false;
-            downloadButton.disabled = true;
 
             recognition = new (window.webkitSpeechRecognition || window.SpeechRecognition)();
             recognition.continuous = true;
             recognition.interimResults = true;
             recognition.lang = 'en-US'; // You can change the language here
 
-            // Reset silence timer on any speech
             recognition.onresult = (event) => {
-                resetSilenceTimer();
                 let interimTranscript = '';
+                let finalTranscript = '';
                 for (let i = event.resultIndex; i < event.results.length; ++i) {
                     if (event.results[i].isFinal) {
-                        finalTranscript += event.results[i][0].transcript + ' ';
+                        finalTranscript += event.results[i][0].transcript;
+                        addTranscriptEntry(finalTranscript.trim());
                     } else {
                         interimTranscript += event.results[i][0].transcript;
                     }
                 }
-                resultDiv.innerHTML = finalTranscript + '<span style="color:#999;">' + interimTranscript + '</span>';
+                // Optionally display interim results if needed
+                // resultDiv.innerHTML = finalTranscript + '<span style="color:#999;">' + interimTranscript + '</span>';
             };
 
             recognition.onstart = () => {
                 instructionsPara.textContent = 'Listening for PA System...';
-                resetSilenceTimer(); // Start the timer when recognition starts
             };
 
             recognition.onspeechend = () => {
-                // Instructions will be updated by the silence timer or stop button
+                // Consider what should happen after speech ends (e.g., stay listening)
             };
 
             recognition.onerror = (event) => {
@@ -159,60 +177,15 @@
                 recognition = null;
             }
             isListening = false;
-            clearTimeout(silenceTimeout); // Clear any pending timeout
 
             startButton.disabled = false;
             stopButton.disabled = true;
-            downloadButton.disabled = finalTranscript.trim() !== '';
             instructionsPara.textContent = 'Stopped listening.';
-        }
-
-        // Function to create and download the text file with timestamp
-        function downloadTranscript() {
-            if (!finalTranscript.trim()) {
-                instructionsPara.textContent = "No transcript to save.";
-                return;
-            }
-
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timestamp = `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
-            const filename = `transcript_${timestamp}.txt`;
-
-            const blob = new Blob([finalTranscript], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a); // Append, trigger, and remove
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url); // Clean up
-            instructionsPara.textContent = `Transcript saved as ${filename}`;
-        }
-
-        // Function to reset the silence timer
-        function resetSilenceTimer() {
-            clearTimeout(silenceTimeout); // Clear any existing timer
-            silenceTimeout = setTimeout(handleSilence, 30000); // 30 seconds (30000 ms)
-        }
-
-        // Function to handle silence
-        function handleSilence() {
-            stopRecognition(); // Stop recognition
-            instructionsPara.textContent = 'Silence detected. Preparing to save transcript...';
-            downloadTranscript(); // Create and download file
         }
 
         // Event Listeners
         startButton.addEventListener('click', startRecognition);
         stopButton.addEventListener('click', stopRecognition);
-        downloadButton.addEventListener('click', downloadTranscript);
     </script>
 </body>
 </html>
