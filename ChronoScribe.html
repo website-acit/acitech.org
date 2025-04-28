@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronoscribe - Styled Date</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f8; /* Default background */
+            color: #333;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: background-color 0.3s ease-in-out; /* For background color change */
+        }
+
+        body.transcribing-bg {
+            background-color: #e0f7fa; /* Light blue or another subtle color */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        h1 img {
+            height: 100px;
+        }
+
+        #instructions {
+            color: #777;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        #live-preview-container {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1em;
+            color: #555;
+        }
+
+        #live-preview-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #777;
+        }
+
+        #live-preview {
+            white-space: pre-wrap;
+        }
+
+        #transcript-area {
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .transcript-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .transcript-box.transcribing-border {
+            border: 2px solid #00c853; /* Highlight color */
+        }
+
+        .transcript-header {
+            display: flex;
+            justify-content: flex-start; /* Align items to the start for inline look */
+            align-items: center;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 1.1em; /* Slightly larger font */
+            font-weight: bold; /* Make the text bold */
+        }
+
+        .timestamp-header {
+            color: #777;
+            font-size: 0.9em; /* Slightly larger than the original timestamp */
+            font-weight: bold; /* Make the timestamp bold as well */
+            margin-left: 5px; /* Add some spacing */
+        }
+
+        .transcript-content {
+            white-space: pre-wrap;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        #date-display {
+            color: #777;
+            font-size: 1.1em; /* Increased font size */
+            font-weight: bold; /* Made the text bold */
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1><img src="ChronoScribe.PNG" alt="Chronoscribe Logo"></h1>
+    <p id="instructions">Listening for PA System...</p>
+    <div id="date-display"></div>
+    <div id="live-preview-container">
+        <div id="live-preview-title">Live Preview</div>
+        <div id="live-preview"></div>
+    </div>
+    <div id="transcript-area">
+        </div>
+
+    <script>
+        // Get DOM elements
+        const transcriptArea = document.getElementById('transcript-area');
+        const instructionsPara = document.getElementById('instructions');
+        const dateDisplay = document.getElementById('date-display');
+        const bodyElement = document.body;
+        const livePreviewDiv = document.getElementById('live-preview');
+
+        // Global variables
+        let recognition;
+        let isListening = false;
+        const silenceDetectionTime = 5000; // 5 seconds
+        let silenceTimeout;
+        let currentTranscript = [];
+        let lastSpokenTime = Date.now();
+        let interimTranscript = '';
+
+        // Function to get the current timestamp in the desired format
+        function getCurrentTimestampForHeading() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        // Function to get the current timestamp in 12-hour format (for sorting)
+        function getCurrentTimestamp() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            return `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        // Function to get the current date in a readable format
+        function getCurrentDateReadable() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return now.toLocaleDateString(undefined, options);
+        }
+
+        // Function to get the current date in<\ctrl3348>-MM-DD format
+        function getCurrentDateYYYYMMDD() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // Function to display the current date
+        function displayCurrentDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateDisplay.textContent = now.toLocaleDateString(undefined, options);
+        }
+
+        function indicateTranscribing() {
+            bodyElement.classList.add('transcribing-bg');
+            setTimeout(() => {
+                bodyElement.classList.remove('transcribing-bg');
+            }, 300); // Adjust duration as needed
+            const lastBox = transcriptArea.lastElementChild;
+            if (lastBox && lastBox.classList.contains('transcript-box')) {
+                lastBox.classList.add('transcribing-border');
+                setTimeout(() => {
+                    lastBox.classList.remove('transcribing-border');
+                }, 300);
+            }
+        }
+
+        function processFinalTranscript() {
+            if (currentTranscript.length > 0) {
+                const timestamp = getCurrentTimestampForHeading();
+                const box = document.createElement('div');
+                box.classList.add('transcript-box');
+                box.style.backgroundColor = getRandomPastelColor();
+
+                const header = document.createElement('div');
+                header.classList.add('transcript-header');
+                header.innerHTML = `PA Announcement at <span class="timestamp-header">${timestamp}</span>`;
+
+                const content = document.createElement('div');
+                content.classList.add('transcript-content');
+                content.textContent = currentTranscript.join('\n').trim();
+
+                box.appendChild(header);
+                box.appendChild(content);
+                transcriptArea.appendChild(box);
+                currentTranscript = [];
+                interimTranscript = ''; // Clear interim transcript after processing
+                livePreviewDiv.textContent = '';
+                sortAnnouncements();
+            }
+        }
+
+        function getRandomPastelColor() {
+            const hue = Math.floor(Math.random() * 360);
+            const saturation = Math.floor(Math.random() * 30) + 70 + '%'; // High saturation for pastel
+            const lightness = Math.floor(Math.random() * 30) + 70 + '%'; // High lightness for pastel
+            return `hsl(${hue}, ${saturation}, ${lightness})`;
+        }
+
+        function resetSilenceTimer() {
+            clearTimeout(silenceTimeout);
+            silenceTimeout = setTimeout(() => {
+                processFinalTranscript();
+                indicateTranscribing(); // Optionally indicate after silence-triggered box creation
+            }, silenceDetectionTime);
+        }
+
+        function sortAnnouncements() {
+            const boxes = Array.from(transcriptArea.children);
+            boxes.sort((a, b) => {
+                const timeAStr = a.querySelector('.timestamp-header')?.textContent;
+                const timeBStr = b.querySelector('.timestamp-header')?.textContent;
+
+                if (timeAStr && timeBStr) {
+                    const dateA = new Date(`2000/01/01 ${timeAStr}`);
+                    const dateB = new Date(`2000/01/01 ${timeBStr}`);
+                    return dateA - dateB;
+                }
+                return 0;
+            });
+
+            // Re-append sorted boxes to the transcript area
+            boxes.forEach(box => transcriptArea.appendChild(box));
+        }
+
+        function startRecognition() {
+            if (isListening) return;
+
+            instructionsPara.textContent = 'Listening for PA System...';
+            isListening = true;
+            currentTranscript = []; // Start with a fresh transcript for the new announcement
+            displayCurrentDate(); // Display the date
+            lastSpokenTime = Date.now(); // Initialize last spoken time
+            interimTranscript = '';
+            livePreviewDiv.textContent = '';
+
+            recognition = new (window.webkitSpeechRecognition || window.SpeechRecognition)();
+            recognition.continuous = true;
+            recognition.interimResults = true; // Enable interim results for live preview
+
+            recognition.onstart = () => {
+                instructionsPara.textContent = 'Listening for PA System...';
+                resetSilenceTimer();
+            };
+
+            recognition.onresult = (event) => {
+                let finalTranscript = '';
+                interimTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript;
+                    } else {
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+                livePreviewDiv.textContent = interimTranscript.trim();
+
+                if (finalTranscript.trim()) {
+                    currentTranscript.push(finalTranscript.trim());
+                    lastSpokenTime = Date.now(); // Update last spoken time
+                }
+                resetSilenceTimer(); // Reset the silence timer on any result
+                indicateTranscribing();
+            };
+
+            recognition.onspeechend = () => {
+                // Speech has ended, reset the silence timer
+                resetSilenceTimer();
+            };
+
+            recognition.onerror = (event) => {
+                // Log the error for debugging, but don't stop or display an error message
+                console.error("Speech recognition error:", event.error);
+                // Optionally, you could implement a backoff/retry mechanism here if needed
+            };
+
+            recognition.onend = () => {
+                if (isListening) {
+                    // If not manually stopped, try to restart recognition
+                    setTimeout(startRecognition, 5000); // Restart after a delay
+                }
+            };
+
+            recognition.start();
+        }
+
+        function stopRecognition() {
+            if (recognition) {
+                recognition.stop();
+                recognition = null;
+            }
+            isListening = false;
+            clearTimeout(silenceTimeout);
+            bodyElement.classList.remove('transcribing-bg');
+            instructionsPara.textContent = 'Stopped listening.';
+            processFinalTranscript(); // Process any remaining transcript
+        }
+
+        function checkAndClearAtMidnight() {
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(24, 0, 0, 0); // Set to the next midnight
+
+            const timeUntilMidnight = midnight.getTime() - now.getTime();
+
+            setTimeout(() => {
+                transcriptArea.innerHTML = ''; // Clear all announcements
+                checkAndClearAtMidnight(); // Set up the next check
+            }, timeUntilMidnight);
+        }
+
+        // Start listening when the page loads
+        window.onload = () => {
+            startRecognition();
+            checkAndClearAtMidnight();
+
+            // Set up an interval to process the transcript every silenceDetectionTime
+            setInterval(() => {
+                if (isListening && Date.now() - lastSpokenTime >= silenceDetectionTime && currentTranscript.length > 0) {
+                    processFinalTranscript();
+                }
+            }, silenceDetectionTime);
+        };
+    </script>
+</body>
+</html>
