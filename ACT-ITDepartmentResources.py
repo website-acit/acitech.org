@@ -210,7 +210,7 @@ def generate_quicklinks_html(csv_file_path, output_html_path="ACT-ITDepartmentRe
             <div class="software-description">{name}</div>
         </div>
                     """
-                    if name in ["Google Admin", "Google Apps Script", "Salto", "Service Desk", "Rise Vision", "Newline", "Promethean"]:
+                    if name in ["Google Admin", "Google Apps Script", "Salto", "Service Desk", "Rise Vision", "Newline", "Promethean", "CTE Building Status"]:
                         management.append(item_html)
                     elif name in ["KB and SR Form", "KB and SR Sheet", "Notifications Form", "Notifications Sheet", "Alerts and Outages Form", "Alerts and Outages Sheet"]:
                         notifications.append(item_html)
