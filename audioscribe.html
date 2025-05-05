@@ -120,23 +120,24 @@
             }
         });
 
-        function sendTranscriptToSheet(transcript) {
-            // Use the correct Web App URL from Google Apps Script
-            const scriptUrl = 'https://script.google.com/a/macros/acitech.org/s/AKfycbzhKZNqZmFK6HGYehSSMgvvOhpL9LHfiISj2kcuxIm5ID17bw2x1sbUBuxglqJpNeUO/exec';  // Replace with your actual Web App URL
+function sendTranscriptToSheet(transcript) {
+    // Replace with your actual Web App URL
+    const scriptUrl = 'https://script.google.com/a/macros/acitech.org/s/AKfycbzhKZNqZmFK6HGYehSSMgvvOhpL9LHfiISj2kcuxIm5ID17bw2x1sbUBuxglqJpNeUO/exec';
 
-            fetch(scriptUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'  // Ensure the correct content type
-                },
-                body: `message=${encodeURIComponent(transcript)}`  // Sending the message parameter
-            })
-            .then(response => response.text())
-            .then(() => {
-                console.log('Announcement saved to sheet');
-            })
-            .catch(error => console.error('Error sending transcript:', error));
-        }
+    fetch(scriptUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'  // Ensure the correct content type
+        },
+        body: `message=${encodeURIComponent(transcript)}`  // Sending the message parameter
+    })
+    .then(response => response.text())
+    .then(() => {
+        console.log('Announcement saved to sheet');
+    })
+    .catch(error => console.error('Error sending transcript:', error));
+}
+
     </script>
 </body>
 </html>
